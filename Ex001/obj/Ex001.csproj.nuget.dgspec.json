@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\idval\\Documents\\Misc\\Misc\\GB_Education\\C_Sharp_New\\Examples\\Ex001\\Ex001.csproj": {}
+    "C:\\Users\\idval\\Documents\\Misc\\Misc\\GB_Education\\C_Sharp_New\\Examples\\C-Sharp_Repo\\Ex001\\Ex001.csproj": {}
   },
   "projects": {
-    "C:\\Users\\idval\\Documents\\Misc\\Misc\\GB_Education\\C_Sharp_New\\Examples\\Ex001\\Ex001.csproj": {
+    "C:\\Users\\idval\\Documents\\Misc\\Misc\\GB_Education\\C_Sharp_New\\Examples\\C-Sharp_Repo\\Ex001\\Ex001.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\idval\\Documents\\Misc\\Misc\\GB_Education\\C_Sharp_New\\Examples\\Ex001\\Ex001.csproj",
+        "projectUniqueName": "C:\\Users\\idval\\Documents\\Misc\\Misc\\GB_Education\\C_Sharp_New\\Examples\\C-Sharp_Repo\\Ex001\\Ex001.csproj",
         "projectName": "Ex001",
-        "projectPath": "C:\\Users\\idval\\Documents\\Misc\\Misc\\GB_Education\\C_Sharp_New\\Examples\\Ex001\\Ex001.csproj",
+        "projectPath": "C:\\Users\\idval\\Documents\\Misc\\Misc\\GB_Education\\C_Sharp_New\\Examples\\C-Sharp_Repo\\Ex001\\Ex001.csproj",
         "packagesPath": "C:\\Users\\idval\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\idval\\Documents\\Misc\\Misc\\GB_Education\\C_Sharp_New\\Examples\\Ex001\\obj\\",
+        "outputPath": "C:\\Users\\idval\\Documents\\Misc\\Misc\\GB_Education\\C_Sharp_New\\Examples\\C-Sharp_Repo\\Ex001\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\idval\\AppData\\Roaming\\NuGet\\NuGet.Config"

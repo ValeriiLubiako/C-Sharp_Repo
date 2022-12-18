@@ -3,4 +3,4 @@
 ### лекционных занятий и вебинаров курса обучения в GigBrains
 ### они помещаются в папка с Ex001 по Ex011
 ### в остальных папках помещаются домашние задания
-Seminar 001 Task001 --> [Схема](https://github.com/ValeriiLubiako/C-Sharp_Repo/blob/master/Sem001_001/Blockchart001.drawio.png)
+Seminar 001 Task001 --> [Схема](/Sem001_001/Blockchart001.drawio.png)

@@ -206,26 +206,65 @@ public static class MyLibrary
     {
         int dLTR = -1;
 
-        int i = 0;
-
-        int abnumberA = numberA;
-
-        if (numberA < 0) abnumberA = numberA * (-1);
-
-        //      while (abNumberA > 0)
-        while (i < numberA)
-
+        if (PosLeftToRight > 0)
         {
 
-            abnumberA = abnumberA / 10;
 
-            i++;
+            int i = 0;
+
+            int abnumberA = numberA;
+
+
+
+            if (numberA < 0) abnumberA = numberA * (-1);
+
+            //      while (abNumberA > 0)
+
+
+            while (abnumberA != 0)
+
+            {
+
+                abnumberA = abnumberA / 10;
+
+                i++;
+                //       Console.Write($"{abnumberA,3}");
+                //       Console.WriteLine($"{i,3}");
+
+            }
+
+            int totaldig = i; //  общее число цифр в числе
+
+            //   Console.WriteLine("totaldig =" + $"{totaldig,3}");
+
+            if (numberA < 0) abnumberA = numberA * (-1);
+            else abnumberA = numberA;
+
+            //   Console.WriteLine("abnumberA =" + $"{abnumberA,3}");
+            //   Console.WriteLine("PosLeftToRight =" + $"{PosLeftToRight,3}");
+            //   Console.WriteLine("totaldig =" + $"{totaldig,3}");
+            if (PosLeftToRight > totaldig)
+            {
+                dLTR = -1; //  в числе нет указанной цифры - короткое число...
+            }
+            else
+            {
+
+                for (i = 1; i < (totaldig - PosLeftToRight + 1); i++)
+                {
+                    abnumberA = abnumberA / 10;
+                }
+                dLTR = abnumberA % 10;
+                //    Console.WriteLine("dLTR abnumberA =" + $"{abnumberA,3}");
+            }
+            if (abnumberA == 0) dLTR = 0;
+
 
         }
-
-        if (i >= PosLeftToRight) dLTR = abnumberA % 10;
-        else dLTR = -1;
-
+        else
+        {
+            dLTR = -1;  // номер позиции указан с ошибкой - ноль или отрицат число
+        }
         return dLTR;
     }
 }

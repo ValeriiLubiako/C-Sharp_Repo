@@ -223,8 +223,8 @@ public static class MyLibrary
 
         }
 
-        if (i >= PosLeftToRight) dLTR = abnumberA % 10;
-        else dLTR = -1;
+        if (i >= PosLeftToRight) dLTR = abnumberA % 10;     //  Проверка что номер позиции интересующей цифры 
+        else dLTR = -1;  //  не превышает количества цифр в числе. В противном случае вместо значения цифры возвращаем -1.
 
         return dLTR;
     }

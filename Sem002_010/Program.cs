@@ -34,7 +34,7 @@ while (End != "N")
     }
     Console.WriteLine();
 
-    Console.WriteLine("Продолжить проверку (Y/N");
+    Console.WriteLine("Продолжить проверку чисел (Y/N");
 
     End = Console.ReadLine();
     if (End == "n") break;

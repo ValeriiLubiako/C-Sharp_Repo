@@ -218,7 +218,7 @@ public static class MyLibrary
 
             if (numberA < 0) abnumberA = numberA * (-1);
 
-            
+
             while (abnumberA != 0)
 
             {
@@ -226,14 +226,14 @@ public static class MyLibrary
                 abnumberA = abnumberA / 10;
 
                 i++;
-            
+
             }
 
             int totaldig = i; //  общее число цифр в числе
 
-             if (numberA < 0) abnumberA = numberA * (-1);
+            if (numberA < 0) abnumberA = numberA * (-1);
             else abnumberA = numberA;
-    
+
             if (PosLeftToRight > totaldig)  //  Проверка что номер позиции интересующей цифры        
                                             //  не превышает количества цифр в числе.
                                             // В противном случае вместо значения цифры возвращаем -1.
@@ -248,7 +248,7 @@ public static class MyLibrary
                     abnumberA = abnumberA / 10;
                 }
                 dLTR = abnumberA % 10;
-         
+
             }
             if (abnumberA == 0) dLTR = 0;
 
@@ -260,5 +260,34 @@ public static class MyLibrary
         }
         return dLTR;
     }
-}
+    //   For Future use 
+    //  Метод возвращающий название дня недели, рабочий день или выходной...
+    //  На вход подается порядковый номер дня в недели (1-7) и язык (русск/англ)
+    //  Возвращаются название дня недели и рабочий/выходной на русском или английском языке
+    //   
+    public static bool WeekDaySpec(int DayNo, string wkday, string wkDayClass)
+    {
+
+        bool result = true;
+        wkday = String.Empty;
+        wkDayClass = String.Empty;
+
+        string [] arrWeekDaysRus = {"не определен", "понедельник", "вторник", "среда", "четверг", "пятница", "суббота", "воскресенье" };
+        string [] arrDaysRus = { "рабочий", "рабочий", "рабочий", "рабочий", "рабочий", "выходной", "выходной" };
+
+        string [] arrWeekDaysEng = {"Undefined", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
+        string [] arrDaysEng = {"undefined", "workday", "workday", "workday", "workday", "workday", "weekend", "weekend" };
+
+        if (DayNo < 1 | DayNo > 7)    result = false;    
+           
+        else
+        {
+            wkday = arrWeekDaysRus[DayNo];
+            wkDayClass = arrDaysRus[DayNo];
+            result = true;
+        }
+        return result;
+
+    }}
+    
 

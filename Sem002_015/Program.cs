@@ -14,41 +14,46 @@ using static MyLibrary;   //  ссылка на библиотеку
 //     цифре в указанном слева десятичном разряде
 int N;
 
-int nPosLeftToRight, totaldigs, DigitInPos;
+int nPosLeftToRight,  DigitInPos;
+
 
 string End = "Y";
+
+string WkDay = String.Empty;
+string WkDayClass = String.Empty;
 
 while (End != "N")
 {
     N = DisplayReplyInt("Введите целое число: ");
 
-    totaldigs = DigitsInNumber (N);
+    //  totaldigs = DigitsInNumber(N);
 
-    if (totaldigs = 1 ) 
+    //   if (N < 1 | N > 7)  // проверка на принадлежность ОДЗ (от 1 до 7)
 
-    {
-        nPosLeftToRight = 1;   // Берется первая слева цифра от числа
-        
-        DigitInPos = PosLeftToRight(N, nPosLeftToRight);
+    //   {
+    //        Console.WriteLine("Ошибка при вводе числа - должно содержать только одну цифру.");
 
-            Console.WriteLine("Продолжить обработку (Y/N");
+    //   }
+    //   else   // если в числе больше одной цифры, то выдается сообщение об ошибке
+    //   {
 
+    nPosLeftToRight = 1;   // Берется первая слева цифра от числа
+
+    DigitInPos = PosLeftToRight(N, nPosLeftToRight);
+
+    if (WeekDaySpec(DigitInPos, wkday, wkDayClass))  Console.WriteLine(WkDay);
+
+    WeekDaySpec(DigitInPos, wkday, wkDayClass);  Console.WriteLine(WkDay);
+
+    else Console.WriteLine("Ошибка при вводе числа - должно содержать только одну цифру.");
+
+    //   }
+
+    Console.WriteLine("Продолжить обработку (Y/N");
     End = Console.ReadLine();
     if (End == "n") break;
     if (End == "т") break;
     if (End == "Т") break;
     if (End == "N") break;
-
-    }   
-else   // если в числе больше одной цифры, то выдается сообщение об ошибке
-{
-Console.WriteLine("Число введено с ошибкой - должно содержать только одну цифру. Продолжить обработку (Y/N)");
-Console.WriteLine("Продолжить обработку (Y/N)");   
-End = Console.ReadLine();
-    if (End == "n") break;
-    if (End == "т") break;
-    if (End == "Т") break;
-    if (End == "N") break;
-}
 
 }

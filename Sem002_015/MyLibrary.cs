@@ -260,34 +260,40 @@ public static class MyLibrary
         }
         return dLTR;
     }
-    //   For Future use 
-    //  Метод возвращающий название дня недели, рабочий день или выходной...
-    //  На вход подается порядковый номер дня в недели (1-7) и язык (русск/англ)
-    //  Возвращаются название дня недели и рабочий/выходной на русском или английском языке
-    //   
-    public static bool WeekDaySpec(int DayNo, string wkday, string wkDayClass)
+    //  
+    //  Метод возвращающий название дня недели или название - рабочий день или выходной...
+    //  На вход подается порядковый номер дня в недели (1-7), параметр, определяющий что возвращать - 
+    //  название дня недели и какой это день и параметр, определяющий на каком языке возвращать
+    //  указанные значения
+
+    public static string WeekDayName(int wkDaynumber, bool WeekDayName, int lang)
     {
 
-        bool result = true;
-        wkday = String.Empty;
-        wkDayClass = String.Empty;
+        string wkday = String.Empty;
 
-        string [] arrWeekDaysRus = {"не определен", "понедельник", "вторник", "среда", "четверг", "пятница", "суббота", "воскресенье" };
-        string [] arrDaysRus = { "рабочий", "рабочий", "рабочий", "рабочий", "рабочий", "выходной", "выходной" };
 
-        string [] arrWeekDaysEng = {"Undefined", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
-        string [] arrDaysEng = {"undefined", "workday", "workday", "workday", "workday", "workday", "weekend", "weekend" };
+        string[] arrWeekDaysRus = { "не определен", "понедельник", "вторник", "среда", "четверг", "пятница", "суббота", "воскресенье" };
+        string[] arrDaysRus = { "не определен","рабочий", "рабочий", "рабочий", "рабочий", "рабочий", "выходной", "выходной" };
 
-        if (DayNo < 1 | DayNo > 7)    result = false;    
-           
+        string[] arrWeekDaysEng = { "Undefined", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
+        string[] arrDaysEng = { "undefined", "workday", "workday", "workday", "workday", "workday", "weekend", "weekend" };
+
+        if (wkDaynumber < 1 | wkDaynumber > 7) wkDaynumber = 0;   //  проверка на ошибочное значение номера дня на входе
+
+        if (lang == 0)    //  при увеличении числа языков заменим на case
+
+        {
+            if (WeekDayName) return arrWeekDaysRus[wkDaynumber];
+            else return arrDaysRus[wkDaynumber];
+        }
         else
         {
-            wkday = arrWeekDaysRus[DayNo];
-            wkDayClass = arrDaysRus[DayNo];
-            result = true;
+            if (WeekDayName) return arrWeekDaysEng[wkDaynumber];
+            else return arrDaysEng[wkDaynumber];
         }
-        return result;
 
-    }}
+    }
     
+}
+
 

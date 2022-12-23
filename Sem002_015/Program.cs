@@ -14,41 +14,53 @@ using static MyLibrary;   //  ссылка на библиотеку
 //     цифре в указанном слева десятичном разряде
 int N;
 
-int nPosLeftToRight,  DigitInPos;
+int lang;
 
-
-string End = "Y";
+int nPosLeftToRight, DigitInPos;
 
 string WkDay = String.Empty;
 string WkDayClass = String.Empty;
 
+
+string End = "Y";
+
+lang = 0;
+
 while (End != "N")
 {
-    N = DisplayReplyInt("Введите целое число: ");
 
-    //  totaldigs = DigitsInNumber(N);
-
-    //   if (N < 1 | N > 7)  // проверка на принадлежность ОДЗ (от 1 до 7)
-
-    //   {
-    //        Console.WriteLine("Ошибка при вводе числа - должно содержать только одну цифру.");
-
-    //   }
-    //   else   // если в числе больше одной цифры, то выдается сообщение об ошибке
-    //   {
+    N = DisplayReplyInt("Введите целое число");
 
     nPosLeftToRight = 1;   // Берется первая слева цифра от числа
 
     DigitInPos = PosLeftToRight(N, nPosLeftToRight);
 
-    if (WeekDaySpec(DigitInPos, wkday, wkDayClass))  Console.WriteLine(WkDay);
+    if (lang == 0)   //  при увеличении числа языков заменим на case
 
-    WeekDaySpec(DigitInPos, wkday, wkDayClass);  Console.WriteLine(WkDay);
+    {
 
-    else Console.WriteLine("Ошибка при вводе числа - должно содержать только одну цифру.");
+        WkDay = WeekDayName(DigitInPos, true, 0);
 
-    //   }
+        WkDayClass = WeekDayName(DigitInPos, false, 0);
 
+    }
+
+    else
+
+    {
+        WkDay = WeekDayName(DigitInPos, true, 0);  // Возвращает значения на английском - for future use
+
+        WkDayClass = WeekDayName(DigitInPos, false, 0);   // Возвращает значения на английском - for future use
+
+    }
+
+    if (WkDay == "не определен") Console.WriteLine("Ошибка. Число выходит за допустимый диапазон значений (от 1 до 7)");
+
+    else Console.WriteLine("Это " + $"{WkDay}" + "," + $"{WkDayClass}" + " день");
+
+    if ( N < 0 | N > 9) Console.WriteLine ("Оценивали по самой левой цифре числа");
+
+    Console.WriteLine();
     Console.WriteLine("Продолжить обработку (Y/N");
     End = Console.ReadLine();
     if (End == "n") break;

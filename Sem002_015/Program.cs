@@ -7,12 +7,11 @@
 //
 using static MyLibrary;   //  ссылка на библиотеку
 //
-// используем написанный ранее метод 
-// - DisplayReplyInt() - ввод целого числа с терминала
-// - PosLeftToRight() - возвращает числовое значение, соответствующее
-// -  DigitsInNumber() - возвращает количество цифр (десфтичных разрядов) в числе
-//     цифре в указанном слева десятичном разряде
-int N;
+// - используем написанные ранее методы
+// - DisplayReplyInt() - Метод ввода с терминала целого числа
+// - PosLeftToRight() - Метод вывода заданной цифры из целого числа//  
+// - WeekDayName() - вМетод возвращающий название дня недели или название - рабочий день или выходной...
+//  
 
 int lang;
 
@@ -29,7 +28,7 @@ lang = 0;
 while (End != "N")
 {
 
-    N = DisplayReplyInt("Введите целое число");
+  int  N = DisplayReplyInt("Введите целое число");
 
     nPosLeftToRight = 1;   // Берется первая слева цифра от числа
 
@@ -48,9 +47,9 @@ while (End != "N")
     else
 
     {
-        WkDay = WeekDayName(DigitInPos, true, 0);  // Возвращает значения на английском - for future use
+        WkDay = WeekDayName(DigitInPos, true, 1);  // Возвращает значения на английском - for future use
 
-        WkDayClass = WeekDayName(DigitInPos, false, 0);   // Возвращает значения на английском - for future use
+        WkDayClass = WeekDayName(DigitInPos, false, 1);   // Возвращает значения на английском - for future use
 
     }
 

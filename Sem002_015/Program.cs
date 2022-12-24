@@ -28,7 +28,7 @@ lang = 0;
 while (End != "N")
 {
 
-  int  N = DisplayReplyInt("Введите целое число");
+    int N = DisplayReplyInt("Введите целое число");
 
     nPosLeftToRight = 1;   // Берется первая слева цифра от числа
 
@@ -57,7 +57,8 @@ while (End != "N")
 
     else Console.WriteLine("Это " + $"{WkDay}" + "," + $"{WkDayClass}" + " день");
 
-    if ( N < 0 | N > 9) Console.WriteLine ("Оценивали по самой левой цифре числа");
+    //  if ( N < 0 | N > 9) Console.WriteLine ("Оценивали по самой левой цифре числа");
+    if (N < 0 | N > 9) Console.WriteLine("Ошибка. Число выходит за допустимый диапазон значений (от 1 до 7)");
 
     Console.WriteLine();
     Console.WriteLine("Продолжить обработку (Y/N");

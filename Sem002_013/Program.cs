@@ -18,9 +18,9 @@ string End = "Y";
 
 while (End != "N")
 {
-    N = DisplayReplyInt("Введите целое число: ");
+    N = DisplayReplyInt("Введите целое число");
 
-    nPosLeftToRight = DisplayReplyInt("Введите номер интересующей цифры в предыдущем числе: ");
+    nPosLeftToRight = DisplayReplyInt("Введите номер интересующей цифры в числе");
 
     DigitInPos = PosLeftToRight(N, nPosLeftToRight);
 

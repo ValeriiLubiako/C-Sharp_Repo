@@ -58,9 +58,9 @@ public static class MyLibrary
         int i = 0;
         int j = 0;
 
-        while (i < rowcount) ;
+        while (i < rowcount) 
         {
-            while (j < colcount) ;
+            while (j < colcount) 
             {
                 collection[i, j] = new Random().Next(argmin, argmax);
 

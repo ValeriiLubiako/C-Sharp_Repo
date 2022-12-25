@@ -95,6 +95,7 @@ public static class MyLibrary
     public static void PrintArrayInLine(int[] arr, int Linelength)
     {
         int Llength = 10;
+        Console.WriteLine();
 
         if (Linelength < 10) Llength = Linelength;
 
@@ -199,22 +200,27 @@ public static class MyLibrary
         return result;
     }
     //  For future use
-    //  Метод определения количества цифр в целои числе
+    //  Метод определения количества и суммы цифр в целои числе
     //  на вход подается целое число
-    //  возвращается количество цифр в этом числе
+    //  возвращается количество цифр в этом числе и их сумма.
 
-    public static int DigitsInNumber(int numberA)
+    public static int DigitsInNumber(int numberA, out int SumOfDigits)
     {
 
         int count = 0;
 
-        int n = 0;
+        int n = numberA;
+
+        SumOfDigits = 0;
 
         if (numberA < 0) n = numberA * (-1);
 
         while (n > 0)
         {
             count = count + 1;
+
+            SumOfDigits = SumOfDigits + n % 10;
+
             n = n / 10;
         }
 
@@ -366,9 +372,88 @@ public static class MyLibrary
         { newnumber = newnumber * 10 + num % 10; num /= 10; }
         return newnumber;
     }
+    //  
+    //  Метод возведения целого числа в степень. Показатель степени - положительное целое число
+    //
+    public static bool MyPowInt(int A, int B, out int APowB)
+    {
+
+        APowB = 0;
+        bool flag = false;
+
+        if (B < 0)
+        {
+            Console.WriteLine("Метод не предназначен для возведения в отрицатеьную степень: " + $"{B,3}");
+            return flag;
+        }
+        else
+        {
+            if (A == 0 && B == 0) Console.WriteLine("Операция возведения нуля в нулевую степень не определена.");
+            else
+            {
+                if (B == 0) APowB = 1;
+                else APowB = A;
+
+                for (int i = 1; i < B; i++) APowB = APowB * A;
+
+                flag = true;
+
+            }
+            return flag;
+
+        }
+
+    }
+    //
+    // Метод формирующий представлеине числа в 15-й или 16-й СС
+    // и также считающий его десятичное представлениеж 
+    // На вход подается массив цифр в 15-м или 16-м представлении,
+    // признак, определяющий  СС (15-я или 16-я)
+    // Выходными данными являются строка, содержащая 15-е или 16-е представление числа и
+    // десятичное педставление этого числа.
+    public static void ConvertNumber(int[] collection, int SystemBase, out string BaseNumber, out int NumberDecimal)
+    {
+        int length = collection.Length;
+
+        int[]  DecimalArray = {0, 1, 2, 3, 4,5,6,7,8,9,10,11,12,13,14,15,16};
+
+        string[] HexArray =  {0,1,2,3,4,5,6,7,8,9,A,B, C, D,E,F};
+
+if (SystemBAse = 15) 
+
+{
+
+
+}
+else
+
+{
 
 
 
 
 
+}
+
+
+
+
+
+
+
+
+
+
+        int index = 0;
+
+        while (index < length)
+        {
+            collection[index] = new Random().Next(argmin, argmax);
+
+            //      collection[index] = Random.Shared.Next(argmin, argmax);
+
+            index++;
+
+        }
+    }
 }

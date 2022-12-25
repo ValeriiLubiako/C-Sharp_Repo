@@ -95,6 +95,7 @@ public static class MyLibrary
     public static void PrintArrayInLine(int[] arr, int Linelength)
     {
         int Llength = 10;
+        Console.WriteLine();
 
         if (Linelength < 10) Llength = Linelength;
 
@@ -366,9 +367,37 @@ public static class MyLibrary
         { newnumber = newnumber * 10 + num % 10; num /= 10; }
         return newnumber;
     }
+    //  
+    //  Метод возведения целого числа в степень. Показатель степени - положительное целое число
+    //
+    public static bool MyPowInt(int A, int B, out int APowB)
+    {
 
+        APowB = 0;
+        bool flag = false;
 
+        if (B < 0)
+        {
+            Console.WriteLine("Метод не предназначен для возведения в отрицатеьную степень: " + $"{B,3}");
+            return flag;
+        }
+        else
+        {
+            if (A == 0 && B == 0) Console.WriteLine("Операция возведения нуля в нулевую степень не определена.");
+            else
+            {
+                if (B ==0) APowB = 1;
+                else APowB = A;
+                
+                for (int i = 1; i < B; i++)   APowB = APowB * A;
+                                  
+                flag = true;
 
+            }
+            return flag;
 
+        }
+
+    }
 
 }

@@ -16,6 +16,8 @@ using static MyLibrary;
 //
 string End = "Y";
 
+int sBase = 16;
+
 while (End != "N")
 {
 
@@ -32,6 +34,14 @@ while (End != "N")
         FillArray (MyArray, 0,14);  //  заполнение массива случайными числами в диапазоне от 0 до 14
 
         PrintArrayInLine(MyArray, 10);     //  вывод массива на консоль
+
+        if (ConvertNumber (MyArray, sBase, out string NumberInString, out int NumberInDec))
+        {
+            Console.WriteLine(">>>>>>>---->>>>>>");
+            Console.Writeline();
+            Console.Writeline ('/n' + $"Значение числа в {sBase,2}-ричной системе: {NumberInString,3}")
+            Console.Writeline ('/n' + $"Значение числа в десятичной системе: {NumberInDec,3}")
+        }
 
         End = DisplayReplyString("Продолжить обработку (Y/N");
         if (End == "n") break;

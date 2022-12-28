@@ -142,7 +142,8 @@ public static class MyLibrary
         return position;
     }
     //
-    //  Метод ввода с термина строки символов
+    //  Метод ввода с терминала строки символов
+    //
     public static double DisplayReplyDouble(string PromptMessage)
     {
         double DoubleVal = 0;
@@ -411,49 +412,38 @@ public static class MyLibrary
     // признак, определяющий  СС (15-я или 16-я)
     // Выходными данными являются строка, содержащая 15-е или 16-е представление числа и
     // десятичное педставление этого числа.
-    public static void ConvertNumber(int[] collection, int SystemBase, out string BaseNumber, out int NumberDecimal)
+    public static bool ConvertNumber(int[] collection, int SystemBase, out string BaseNumber, out int NumberDecimal)
     {
+        bool flag = false;  // возвращаемый флажок успешного завершения работы метода (true/false)
+        
         int length = collection.Length;
 
         int[]  DecimalArray = {0, 1, 2, 3, 4,5,6,7,8,9,10,11,12,13,14,15,16};
 
         string[] HexArray =  {0,1,2,3,4,5,6,7,8,9,A,B, C, D,E,F};
 
-if (SystemBAse = 15) 
+        BaseNumber = Empty.String;
 
-{
+        NumberDecimal = 0;
 
-
-}
-else
-
-{
-
-
-
-
-
-}
-
-
-
-
-
-
-
-
-
-
-        int index = 0;
-
-        while (index < length)
+        If (length > 0)
         {
-            collection[index] = new Random().Next(argmin, argmax);
+            for (int i = 1; i<=length; i++ )
 
-            //      collection[index] = Random.Shared.Next(argmin, argmax);
+                int j = IndexOf( DecimalArray, collection [i]);
 
-            index++;
-
+                Basenumber = BaseNumber + HexArray[j];
+        
+                if (SystemBase = 15)  NumberDecimal = NumberDecimal + collection [i] * 15;
+                else
+                {
+                    if (SystemBase = 16  NumberDecimal = NumberDecimal + collection [i] * 16;
+                }
+            }   
+            flag = true;
         }
+        else   flag = false;    // Метод не отработал т.к. на вход был подан некорректно сфорированный массив 
+           
+        return flag;   
     }
 }

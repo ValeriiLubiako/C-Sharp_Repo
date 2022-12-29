@@ -412,38 +412,46 @@ public static class MyLibrary
     // признак, определяющий  СС (15-я или 16-я)
     // Выходными данными являются строка, содержащая 15-е или 16-е представление числа и
     // десятичное педставление этого числа.
+    // использован метод из этой же библиотеки:
+    // - MyPowInt() - возвращает значение целого числа возведенного в степень (степень - неотрицатеьное целое число).
     public static bool ConvertNumber(int[] collection, int SystemBase, out string BaseNumber, out int NumberDecimal)
     {
+
         bool flag = false;  // возвращаемый флажок успешного завершения работы метода (true/false)
-        
+
         int length = collection.Length;
 
-        int[]  DecimalArray = {0, 1, 2, 3, 4,5,6,7,8,9,10,11,12,13,14,15,16};
+        int[] DecimalArray = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 };
 
-        string[] HexArray =  {0,1,2,3,4,5,6,7,8,9,A,B, C, D,E,F};
+        string[] HexArray = { "не определено", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F" };
 
-        BaseNumber = Empty.String;
+        BaseNumber = String.Empty;
 
         NumberDecimal = 0;
 
-        If (length > 0)
+        if (length > 0)
         {
-            for (int i = 1; i<=length; i++ )
+            int k = 0;
 
-                int j = IndexOf( DecimalArray, collection [i]);
+            string line = String.Empty;
 
-                Basenumber = BaseNumber + HexArray[j];
-        
-                if (SystemBase = 15)  NumberDecimal = NumberDecimal + collection [i] * 15;
-                else
-                {
-                    if (SystemBase = 16  NumberDecimal = NumberDecimal + collection [i] * 16;
-                }
-            }   
-            flag = true;
+            for (int i = 0; i < length; i++)
+            {
+
+                int j = MyLibrary.IndexOf(DecimalArray, collection[i]);
+
+                line = line + HexArray[j];
+
+                flag = MyLibrary.MyPowInt(SystemBase, length - 1 - i, out k);
+                NumberDecimal = NumberDecimal + collection[i] * k;
+                // Console.WriteLine("i=" + $"{i,3}" + "Numberdebug(i)= " + $"{NumberDecimal,3}" + "k= " + $"{k,3}");
+                // Console.WriteLine("Line - " + $"{line}");
+                flag = true;
+                BaseNumber = line;
+            }
         }
-        else   flag = false;    // Метод не отработал т.к. на вход был подан некорректно сфорированный массив 
-           
-        return flag;   
+        else flag = false;    // Метод не отработал т.к. на вход был подан некорректно сфорированный массив 
+
+        return flag;
     }
 }

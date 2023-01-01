@@ -15,8 +15,6 @@ using static MyLibrary;
 //
 string End = "Y";
 
-int sBase = 15;
-
 while (End != "N")
 {
 
@@ -25,29 +23,42 @@ while (End != "N")
     if (N < 1) Console.WriteLine("Число не может быть меньше 1");
     else
     {
-        int[] MyArray = CreateIntArray(N);   // инициализация массива
+        double[] MyArray = CreateRealArray(N);   // инициализация массива
 
-        FillArray(MyArray, 100, 999);  //  заполнение массива целыми положительными трехзначными случайными числами
+        FillRealArray(MyArray, -100000, 100001);  //  заполнение массива случайными вещественными числами
 
         Console.WriteLine("Распечатываем массив");
-        PrintArrayInLine(MyArray, 10);     //  вывод массива на консоль не более 10 элементов в строку
+        PrintRealArrayInLine(MyArray, 10);     //  вывод массива на консоль не более 10 элементов в строку
         //
-        // В цикле простым перебором подсчитываем количество четных чисел в массиве
+        // В цикле простым перебором находим максимальное и минимальное значение элементов массива
         //
-        int k = 0;
-        int i = 1;
+        // Double valmin, valmax;
 
-        while (i<N)
+
+        int i = 0;
+
+        double valmin = MyArray[0];
+        double valmax = MyArray[0];
+
+        while (i < N)
         {
-            k = k + MyArray [i];
-            i = i + 2;
+            double valArr = MyArray[i];
+
+            if (valmin > valArr) valmin = valArr;
+            if (valmax < valArr) valmax = valArr;
+            i++;
         }
 
-       
-            Console.WriteLine(">>>>>>>---->>>>>>");
-            Console.WriteLine();
-            Console.WriteLine($"Сумма четных чисел в этом массиве равна: {k,2}");
-           
+
+        Console.WriteLine(">>>>>>>---->>>>>>");
+        // Console.WriteLine();
+        Console.WriteLine('\n' + $"Минимальное значение: {valmin.ToString("F3"),3}" + '\n' + $"Максимальное значение: {valmax.ToString("F3"),3}");
+        Console.WriteLine(("").PadRight(24, '-'));
+        Console.WriteLine('\n' + $"Разница между макс и миним: {(valmax - valmin).ToString("F3"),3}");
+
+
+        HappyNewYear();  //   вывод на консоль новогоднего поздравления.
+
     }
     End = DisplayReplyString("Продолжить обработку (Y/N");
     if (End == "n") break;

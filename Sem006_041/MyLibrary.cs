@@ -762,16 +762,19 @@ public static class MyLibrary
         string[] ab = new string[150];
         int i = 0;
 
-        while (i < N)
+        while (i < N)      // Обнуляем заполняемый массив
         {
             dArray[i] = 0;
             i++;
         }
         i = 0;
 
-        string StringFromConsole = string.Empty;
-        string ckiKeyToString = string.Empty;
+        string StringFromConsole = string.Empty;           // Здесь формируем строку из значений символов, получаемых через элемент структуры Console.ReadKey();
+        string ckiKeyToString = string.Empty;              // Строка для считывания кода при однократном обращении к Console.ReadKey();
 
+
+
+        // Определяем значения массива ConsoleReadKeyValues как массив допустимых для ввода числовых данных кодов эл-та структуры, считываемой по Console.ReadKey()
         string[] ConsoleReadKeyValues = { "D0", "D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8", "D9", "Oem2", "OemPeriod", "OemMinus", "Spacebar", "Enter", "Escape" };
 
         // int k = 100;
@@ -787,15 +790,15 @@ public static class MyLibrary
         string ConsoleString = string.Empty;
         int kswitch = 1000;
 
-        bool caseflag10 = true;      //  блокирует повторный ввод клавиш пробел, точка, запятая
-        bool caseflag11 = true;
-        bool caseflag12 = true;
+        bool caseflag10 = true;      // флажки, используются для модификации ветвления - 
+        bool caseflag11 = true;      //  блокируют повторный ввод клавиш пробел, точка, запятая, знак минус
+        bool caseflag12 = true;     //  или комбинации их нежелательных последовательностей 
         bool caseflag13 = true;
         bool caseflag14 = true;
 
-        do
+        do     // цикл опроса по Console.ReadKey();
         {
-            Console.SetCursorPosition(origCol, origRow + 1);
+            Console.SetCursorPosition(origCol, origRow + 1);        // располагаем курсор в верхнем левом углу области
 
 
             cki = Console.ReadKey();
@@ -803,8 +806,10 @@ public static class MyLibrary
             ckiKeyToString = cki.Key.ToString();
 
             kswitch = 10000;    // если не является допустимым символом, то возвращается необрабатываемое в switch значение
+                                //  таким образом ограничиваеим возможность ввода только цифрами, 
+                                //  знаком минус, точкой и зпт, управление - Enter  и Escape
 
-            for (int j = 0; j < 16; j++)
+            for (int j = 0; j < 16; j++)        // формирую целочисленные значения для параметра переключателя
             {
                 if (ckiKeyToString == ConsoleReadKeyValues[j])
                 {
@@ -814,9 +819,12 @@ public static class MyLibrary
 
             }
 
+            int kswitch1 = kswitch;
+            if (kswitch < 10) kswitch1 = 0;
 
 
-            switch (kswitch)
+            // switch (kswitch)
+            switch (kswitch1)
 
             {
                 case 0:
@@ -1009,21 +1017,20 @@ public static class MyLibrary
 
 
 
-            if (cki.Key == ConsoleKey.Enter && caseflag14 ) break;
+            if (cki.Key == ConsoleKey.Enter && caseflag14) break;
 
         } while (cki.Key != ConsoleKey.Escape);
 
 
         if (debugFlag) PrintStringArrayInLine(ab, 10);
 
-        // Assign double numeric values to dArray elements from ConsoleString string
+        // Assign double  values to dArray elements from ConsoleString string
 
         i = 0;    //dArray index
         string[] subs = ConsoleString.Split(' ');
         if (nFilled != -1)
         {
             nFilled = 0;           // Счетчик числа заполненных в dArray значений - инициализация - обнуляем
-            Console.WriteLine("Тест nFilled != -1, нажав Esc. Повторите последнюю транзакцию, пожалуйста.");
         }
         else
         {

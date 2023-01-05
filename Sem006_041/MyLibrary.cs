@@ -2,8 +2,17 @@
 //
 public static class MyLibrary
 {
-    private const int V = 12;
-
+    //   private const int V = 12;
+    //
+    //
+    // Метод поиска минимального числа из двх целых чисел
+    //
+    public static int Min(int arg1, int arg2)
+    {
+        int result = arg1;
+        if (arg2 < result) result = arg2;
+        return result;
+    }
     //
     // Метод поиска максимального числа из трех целых чисел
     //
@@ -310,11 +319,22 @@ public static class MyLibrary
         int intVal = 0;
 
 
+        Console.Clear();
         Console.Write(PromptMessage + ": ");
+        try
+        {
+            intVal = Convert.ToInt32(Console.ReadLine());
+        }
 
-        intVal = Convert.ToInt32(Console.ReadLine());
+        catch (FormatException)
+        {
+            Console.WriteLine("Unable to convert '{0}' to a Double.", Console.ReadLine());
+        }
+        catch (OverflowException)
+        {
+            Console.WriteLine("'{0}' is outside the range of a Double.", Console.ReadLine());
 
-
+        }
 
         return intVal;
     }
@@ -722,7 +742,7 @@ public static class MyLibrary
         return jFcolorOut;
     }
 
-    public static bool DoubleDataEntryForArray(int N, double[] dArray, bool debugFlag)
+    public static bool DataEntryForArrayDouble(int N, double[] dArray, int iNCurrent, out int nFilled, bool debugFlag)
     //
     //  Метод возвращает массив введенных с консоли вещественных чисел
     //  На вход подается:
@@ -733,12 +753,11 @@ public static class MyLibrary
     {
         ConsoleKeyInfo cki;
         bool flagOK = true;
+        nFilled = iNCurrent;
 
-        Console.TreatControlCAsInput = true;   // Блокируем выход по CTRL+C, останутся только по Esc и Enter
 
+        // Console.TreatControlCAsInput = true;   // Блокируем выход по CTRL+C, останутся только по Esc и Enter
 
-        Console.WriteLine("Press any combination of CTL, ALT, and SHIFT, and a console key.");
-        Console.WriteLine("Press the Escape (Esc) key to quit: \n");
 
         string[] ab = new string[150];
         int i = 0;
@@ -758,34 +777,33 @@ public static class MyLibrary
         // int k = 100;
 
         Console.Clear();
+
         int origRow = Console.CursorTop;
         int origCol = Console.CursorLeft;
-        int colPos = origCol;
+        // int colPos = origCol;
+
+        // Clear the screen, then save the top and left coordinates.
+
         string ConsoleString = string.Empty;
         int kswitch = 1000;
 
+        bool caseflag10 = true;      //  блокирует повторный ввод клавиш пробел, точка, запятая
+        bool caseflag11 = true;
+        bool caseflag12 = true;
+        bool caseflag13 = true;
+        bool caseflag14 = true;
+
         do
         {
+            Console.SetCursorPosition(origCol, origRow + 1);
 
-            // origRow = Console.CursorTop;
-            // origCol = Console.CursorLeft;
-
-            // Console.WriteLine($"origRow= {origRow,3} origCol= {origCol,3}");
 
             cki = Console.ReadKey();
-
-            // Console.Write(" --- You pressed ");
-            // if ((cki.Modifiers & ConsoleModifiers.Alt) != 0) Console.Write("ALT+");
-            // if ((cki.Modifiers & ConsoleModifiers.Shift) != 0) Console.Write("SHIFT+");
-            // if ((cki.Modifiers & ConsoleModifiers.Control) != 0) Console.Write("CTL+");
-            // Console.WriteLine(cki.Key.ToString());
-
-
-            // Console.Write(StringFromConsole);
 
             ckiKeyToString = cki.Key.ToString();
 
             kswitch = 10000;    // если не является допустимым символом, то возвращается необрабатываемое в switch значение
+
             for (int j = 0; j < 16; j++)
             {
                 if (ckiKeyToString == ConsoleReadKeyValues[j])
@@ -796,144 +814,302 @@ public static class MyLibrary
 
             }
 
-            // Console.WriteLine($"kswitch= {kswitch,3} ckiKeyToString= {ckiKeyToString,3}");
+
+
             switch (kswitch)
 
             {
                 case 0:
+                    caseflag10 = true;
+                    caseflag11 = true;
+                    caseflag12 = true;
+                    caseflag13 = true;
+                    caseflag14 = true;
                     StringFromConsole = kswitch.ToString();
                     ConsoleString = ConsoleString + StringFromConsole;
                     ab[i] = cki.Key.ToString();
                     i++;
                     break;
                 case 1:
+                    caseflag10 = true;
+                    caseflag11 = true;
+                    caseflag12 = true;
+                    caseflag13 = true;
+                    caseflag14 = true;
                     StringFromConsole = kswitch.ToString();
                     ConsoleString = ConsoleString + StringFromConsole;
                     ab[i] = cki.Key.ToString();
                     i++;
                     break;
                 case 2:
+                    caseflag10 = true;
+                    caseflag11 = true;
+                    caseflag12 = true;
+                    caseflag13 = true;
+                    caseflag14 = true;
                     StringFromConsole = kswitch.ToString();
                     ConsoleString = ConsoleString + StringFromConsole;
                     ab[i] = cki.Key.ToString();
                     i++;
                     break;
                 case 3:
+                    caseflag10 = true;
+                    caseflag11 = true;
+                    caseflag12 = true;
+                    caseflag13 = true;
+                    caseflag14 = true;
                     StringFromConsole = kswitch.ToString();
                     ConsoleString = ConsoleString + StringFromConsole;
                     ab[i] = cki.Key.ToString();
                     i++;
                     break;
                 case 4:
+                    caseflag10 = true;
+                    caseflag11 = true;
+                    caseflag12 = true;
+                    caseflag13 = true;
+                    caseflag14 = true;
                     StringFromConsole = kswitch.ToString();
                     ConsoleString = ConsoleString + StringFromConsole;
                     ab[i] = cki.Key.ToString();
                     i++;
                     break;
                 case 5:
+                    caseflag10 = true;
+                    caseflag11 = true;
+                    caseflag12 = true;
+                    caseflag13 = true;
+                    caseflag14 = true;
                     StringFromConsole = kswitch.ToString();
                     ConsoleString = ConsoleString + StringFromConsole;
                     ab[i] = cki.Key.ToString();
                     i++;
                     break;
                 case 6:
+                    caseflag10 = true;
+                    caseflag11 = true;
+                    caseflag12 = true;
+                    caseflag13 = true;
+                    caseflag14 = true;
                     StringFromConsole = kswitch.ToString();
                     ConsoleString = ConsoleString + StringFromConsole;
                     ab[i] = cki.Key.ToString();
                     i++;
                     break;
                 case 7:
+                    caseflag10 = true;
+                    caseflag11 = true;
+                    caseflag12 = true;
+                    caseflag13 = true;
+                    caseflag14 = true;
                     StringFromConsole = kswitch.ToString();
                     ConsoleString = ConsoleString + StringFromConsole;
                     ab[i] = cki.Key.ToString();
                     i++;
                     break;
                 case 8:
+                    caseflag10 = true;
+                    caseflag11 = true;
+                    caseflag12 = true;
+                    caseflag13 = true;
+                    caseflag14 = true;
                     StringFromConsole = kswitch.ToString();
                     ConsoleString = ConsoleString + StringFromConsole;
                     ab[i] = cki.Key.ToString();
                     i++;
                     break;
                 case 9:
+                    caseflag10 = true;
+                    caseflag11 = true;
+                    caseflag12 = true;
+                    caseflag13 = true;
+                    caseflag14 = true;
                     StringFromConsole = kswitch.ToString();
                     ConsoleString = ConsoleString + StringFromConsole;
                     ab[i] = cki.Key.ToString();
                     i++;
                     break;
                 case 10:
-                    StringFromConsole = ".";
-                    ConsoleString = ConsoleString + StringFromConsole;
-                    ab[i] = cki.Key.ToString();
-                    i++;
-                    break;
+                    if (caseflag10)
+                    {
+                        caseflag10 = false;
+                        caseflag14 = false;
+                        StringFromConsole = ".";
+                        ConsoleString = ConsoleString + StringFromConsole;
+                        ab[i] = cki.Key.ToString();
+                        i++;
+                        break;
+                    }
+                    else break;
                 case 11:
-                    StringFromConsole = ".";
-                    ConsoleString = ConsoleString + StringFromConsole;
-                    ab[i] = cki.Key.ToString();
-                    i++;
-                    break;
+                    if (caseflag11)
+                    {
+                        caseflag11 = false;
+                        caseflag14 = false;
+                        StringFromConsole = ".";
+                        ConsoleString = ConsoleString + StringFromConsole;
+                        ab[i] = cki.Key.ToString();
+                        i++;
+                        break;
+                    }
+                    else break;
                 case 12:
-                    StringFromConsole = "-";
-                    ConsoleString = ConsoleString + StringFromConsole;
-                    ab[i] = cki.Key.ToString();
-                    i++;
-                    break;
+                    if (caseflag12)
+                    {
+                        caseflag12 = false;
+                        caseflag14 = false;
+                        StringFromConsole = "-";
+                        ConsoleString = ConsoleString + StringFromConsole;
+                        ab[i] = cki.Key.ToString();
+                        i++;
+                        break;
+                    }
+                    else break;
                 case 13:
-                    StringFromConsole = " ";
-                    ConsoleString = ConsoleString + StringFromConsole;
-                    ab[i] = cki.Key.ToString();
-                    i++;
-                    break;
+                    if (caseflag13)
+                    {
+                        caseflag13 = false;
+                        caseflag14 = false;
+                        StringFromConsole = " ";
+                        ConsoleString = ConsoleString + StringFromConsole;
+                        ab[i] = cki.Key.ToString();
+                        i++;
+                        break;
+                    }
+                    else break;
                 case 14:
                     // StringFromConsole = "Enter";
-                    ab[i] = cki.Key.ToString();
-                    i++;
-                    break;
+                    if (caseflag14)
+                    {
+                        caseflag10 = true;
+                        caseflag11 = true;
+                        caseflag12 = true;
+                        caseflag13 = true;
+                        ab[i] = cki.Key.ToString();
+                        i++;
+                        break;
+                    }
+                    else break;
                 case 15:
                     // StringFromConsole = "Escape";
+                    caseflag10 = true;
+                    caseflag11 = true;
+                    caseflag12 = true;
+                    caseflag13 = true;
+                    caseflag14 = true;
                     ab[i] = cki.Key.ToString();
                     i++;
+                    nFilled = -1;
                     break;
             }
 
-
-            // Console.SetCursorPosition (x, y);
-            // Console.Write("+");
-            // int oldX = 0;
-            // int oldY = 0;
-            // Console.GetCursorPosition(out  oldX, out oldY);
-
-            // Some console output goes out here
-
-            //   var oldX = Console.CursorLeft;
-            //   var oldY = Console.CursotTop;
-
-            // Some console output goes out here
-
-
-            // Console.SetCursorPosition(oldX, oldY);
-            // origRow = Console.CursorTop;
-            // origCol = Console.CursorLeft;
-
-
-            // colPos++;
-            // Console.Clear();
-            // Console.SetCursorPosition(origRow, colPos);
             Console.SetCursorPosition(0, 0);
-            // Console.Write($"origRow= {origRow,3} origCol= {origCol,3}");
+
             Console.Write(ConsoleString);
 
 
 
-            if (cki.Key == ConsoleKey.Enter) break;
+            if (cki.Key == ConsoleKey.Enter && caseflag14 ) break;
 
-            // Console.WriteLine(cki.Key);
         } while (cki.Key != ConsoleKey.Escape);
 
-        // Console.Write(StringFromConsole);
-        // Console.WriteLine($"origRow= {origRow,3} origCol= {origCol,3}");
+
         if (debugFlag) PrintStringArrayInLine(ab, 10);
+
+        // Assign double numeric values to dArray elements from ConsoleString string
+
+        i = 0;    //dArray index
+        string[] subs = ConsoleString.Split(' ');
+        if (nFilled != -1)
+        {
+            nFilled = 0;           // Счетчик числа заполненных в dArray значений - инициализация - обнуляем
+            Console.WriteLine("Тест nFilled != -1, нажав Esc. Повторите последнюю транзакцию, пожалуйста.");
+        }
+        else
+        {
+            Console.WriteLine("Вы прервали ввод, нажав Esc. Повторите последнюю транзакцию, пожалуйста.");
+            return false;
+        }
+        foreach (string sub in subs)
+        {
+
+            try
+            {
+                dArray[i] = Convert.ToDouble(sub);
+                nFilled++;      // Счетчик числа заполненных в dArray значений - добавляем 1 при заполнении очередного значения
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Unable to convert '{0}' to a Double.", sub);
+                flagOK = false;
+                break;
+            }
+            catch (OverflowException)
+            {
+                Console.WriteLine("'{0}' is outside the range of a Double.", sub);
+                flagOK = false;
+                break;
+            }
+            if (i < N - 1) i++;    //  движемся по формируемому массиву значений
+            else break;     //  до достижения его раницы, что сверху границы длины массива остается неприсвоенным
+        }
         return flagOK;
 
+    }
+    public static bool FillArrayConsoleDouble(double[] MyArray, bool debugFlag)
+    //
+    // Метод заполнения массива вещественными числами с консоли
+    // На вход полается массив вещественных чисел и значение флага выполнения в отладочном режиме
+    // (в отладочном режиме  выдаются на консоль содержание рабочих массивов)
+    // Возвращается заполненный значениями массив и булевское значение успешного (неуспешного) 
+    // завершения работы метода
+    //
+    {
+        int N = MyArray.Length;
+
+        int M = 0;     // Счетчик заполненных элементов массива MyArray
+
+
+        while (M < N)
+        {
+            int i = N - M;
+            double[] dArray = MyLibrary.CreateRealArray(i);
+
+            if (MyLibrary.DataEntryForArrayDouble(i, dArray, M, out int nassigned, false))
+            {
+                if (nassigned == -1)
+                {
+                    return false;
+                }
+                for (int j = 0; j < MyLibrary.Min(i, nassigned); j++)  //  В MyArray заносятся только первые N значений (в соответствии с его длиной)
+                {
+                    MyArray[M + j] = dArray[j];     //  Дописываем в массив MyArray с которым обращались из основной программы
+                }
+
+                M = M + nassigned;     //  обновляем количество заполненных элементов массива MyArray
+            }
+            else
+            {
+                Console.WriteLine("При вводе произошла ошибка. Повторите последнюю транзакцию, пожалуйста.");
+
+                // PrintRealArrwithHeader("Распечатываем рабочий массив (отладка)", dArray);
+                // PrintRealArrwithHeader("Распечатываем возвращаемый массив (отладка)", MyArray);
+
+
+            }
+            if (debugFlag)
+            {
+                PrintRealArrwithHeader("Распечатываем рабочий массив (отладка)", dArray);
+                PrintRealArrwithHeader("Распечатываем возвращаемый массив (отладка)", MyArray);
+            }
+        }
+
+        return true;
+    }
+
+    public static void PrintRealArrwithHeader(string header, double[] MyArray)
+    {
+        Console.WriteLine(header);
+        MyLibrary.PrintRealArrayInLine(MyArray, 10);     //  вывод массива на консоль не более 10 элементов в строку
     }
 }

@@ -328,12 +328,14 @@ public static class MyLibrary
 
         catch (FormatException)
         {
-            Console.WriteLine("Unable to convert '{0}' to a Double.", Console.ReadLine());
+            // Console.WriteLine("Unable to convert '{0}' to a Int32.", Console.ReadLine());
+            Console.WriteLine("Допускаются только цифры, минимум одна - обязательна...", Console.ReadLine());
+            intVal = 0;
         }
         catch (OverflowException)
         {
-            Console.WriteLine("'{0}' is outside the range of a Double.", Console.ReadLine());
-
+            Console.WriteLine("'{0}' is outside the range of an Int32.", Console.ReadLine());
+            intVal = 0;
         }
 
         return intVal;
@@ -607,7 +609,7 @@ public static class MyLibrary
 
         return flag;
     }
-    public static void HappyNewYear()
+    public static void HappyNewYear(string[] stringArray)
     //
     //  Метод вывода на консоль поздравления с новым годом
     //  с интервалос в 0ю5 секунды побуквенно формируется строка
@@ -618,7 +620,7 @@ public static class MyLibrary
     {
 
         // string[] stringArray = new string[25];
-        string[] stringArray = { "С", " ", "Н", "О", "В", "Ы", "М", " ", "Г", "О", "Д", "О", "М", "!", "0" };
+        // string[] stringArray = { "С", " ", "Н", "О", "В", "Ы", "М", " ", "Г", "О", "Д", "О", "М", "!", "0" };
 
         string strout = String.Empty;
 
@@ -742,7 +744,7 @@ public static class MyLibrary
         return jFcolorOut;
     }
 
-    public static bool DataEntryForArrayDouble(int N, double[] dArray, int iNCurrent, out int nFilled, bool debugFlag)
+    public static bool DataEntryForArrayDouble(double[] dArray, int iNCurrent, out int nFilled, bool debugFlag)
     //
     //  Метод возвращает массив введенных с консоли вещественных чисел
     //  На вход подается:
@@ -751,6 +753,7 @@ public static class MyLibrary
     //
     //
     {
+        int N = dArray.Length;
         ConsoleKeyInfo cki;
         bool flagOK = true;
         nFilled = iNCurrent;
@@ -784,6 +787,10 @@ public static class MyLibrary
         int origRow = Console.CursorTop;
         int origCol = Console.CursorLeft;
         // int colPos = origCol;
+        Console.SetCursorPosition(origCol, origRow);
+        Console.WriteLine("Вводите элементы массива (через пробел, желательно на латинской раскладке):");
+        Console.WriteLine("Ввод чисел из сроки в массив - ENTER, отказ и повторный ввод - ESCAPE");
+
 
         // Clear the screen, then save the top and left coordinates.
 
@@ -798,7 +805,7 @@ public static class MyLibrary
 
         do     // цикл опроса по Console.ReadKey();
         {
-            Console.SetCursorPosition(origCol, origRow + 1);        // располагаем курсор в верхнем левом углу области
+            Console.SetCursorPosition(origCol, origRow + 2);        // располагаем курсор в верхнем левом углу области
 
 
             cki = Console.ReadKey();
@@ -828,105 +835,6 @@ public static class MyLibrary
 
             {
                 case 0:
-                    caseflag10 = true;
-                    caseflag11 = true;
-                    caseflag12 = true;
-                    caseflag13 = true;
-                    caseflag14 = true;
-                    StringFromConsole = kswitch.ToString();
-                    ConsoleString = ConsoleString + StringFromConsole;
-                    ab[i] = cki.Key.ToString();
-                    i++;
-                    break;
-                case 1:
-                    caseflag10 = true;
-                    caseflag11 = true;
-                    caseflag12 = true;
-                    caseflag13 = true;
-                    caseflag14 = true;
-                    StringFromConsole = kswitch.ToString();
-                    ConsoleString = ConsoleString + StringFromConsole;
-                    ab[i] = cki.Key.ToString();
-                    i++;
-                    break;
-                case 2:
-                    caseflag10 = true;
-                    caseflag11 = true;
-                    caseflag12 = true;
-                    caseflag13 = true;
-                    caseflag14 = true;
-                    StringFromConsole = kswitch.ToString();
-                    ConsoleString = ConsoleString + StringFromConsole;
-                    ab[i] = cki.Key.ToString();
-                    i++;
-                    break;
-                case 3:
-                    caseflag10 = true;
-                    caseflag11 = true;
-                    caseflag12 = true;
-                    caseflag13 = true;
-                    caseflag14 = true;
-                    StringFromConsole = kswitch.ToString();
-                    ConsoleString = ConsoleString + StringFromConsole;
-                    ab[i] = cki.Key.ToString();
-                    i++;
-                    break;
-                case 4:
-                    caseflag10 = true;
-                    caseflag11 = true;
-                    caseflag12 = true;
-                    caseflag13 = true;
-                    caseflag14 = true;
-                    StringFromConsole = kswitch.ToString();
-                    ConsoleString = ConsoleString + StringFromConsole;
-                    ab[i] = cki.Key.ToString();
-                    i++;
-                    break;
-                case 5:
-                    caseflag10 = true;
-                    caseflag11 = true;
-                    caseflag12 = true;
-                    caseflag13 = true;
-                    caseflag14 = true;
-                    StringFromConsole = kswitch.ToString();
-                    ConsoleString = ConsoleString + StringFromConsole;
-                    ab[i] = cki.Key.ToString();
-                    i++;
-                    break;
-                case 6:
-                    caseflag10 = true;
-                    caseflag11 = true;
-                    caseflag12 = true;
-                    caseflag13 = true;
-                    caseflag14 = true;
-                    StringFromConsole = kswitch.ToString();
-                    ConsoleString = ConsoleString + StringFromConsole;
-                    ab[i] = cki.Key.ToString();
-                    i++;
-                    break;
-                case 7:
-                    caseflag10 = true;
-                    caseflag11 = true;
-                    caseflag12 = true;
-                    caseflag13 = true;
-                    caseflag14 = true;
-                    StringFromConsole = kswitch.ToString();
-                    ConsoleString = ConsoleString + StringFromConsole;
-                    ab[i] = cki.Key.ToString();
-                    i++;
-                    break;
-                case 8:
-                    caseflag10 = true;
-                    caseflag11 = true;
-                    caseflag12 = true;
-                    caseflag13 = true;
-                    caseflag14 = true;
-                    StringFromConsole = kswitch.ToString();
-                    ConsoleString = ConsoleString + StringFromConsole;
-                    ab[i] = cki.Key.ToString();
-                    i++;
-                    break;
-                case 9:
                     caseflag10 = true;
                     caseflag11 = true;
                     caseflag12 = true;
@@ -1011,6 +919,9 @@ public static class MyLibrary
                     break;
             }
 
+
+
+            Console.Clear();
             Console.SetCursorPosition(0, 0);
 
             Console.Write(ConsoleString);
@@ -1058,7 +969,7 @@ public static class MyLibrary
                 break;
             }
             if (i < N - 1) i++;    //  движемся по формируемому массиву значений
-            else break;     //  до достижения его раницы, что сверху границы длины массива остается неприсвоенным
+            else break;     //  до достижения его границы, что сверху границы длины массива остаются неприсвоенным
         }
         return flagOK;
 
@@ -1082,7 +993,7 @@ public static class MyLibrary
             int i = N - M;
             double[] dArray = MyLibrary.CreateRealArray(i);
 
-            if (MyLibrary.DataEntryForArrayDouble(i, dArray, M, out int nassigned, false))
+            if (MyLibrary.DataEntryForArrayDouble(dArray, M, out int nassigned, false))
             {
                 if (nassigned == -1)
                 {

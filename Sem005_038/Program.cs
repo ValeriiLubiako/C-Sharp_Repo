@@ -57,8 +57,8 @@ while (End != "N")
         Console.WriteLine(("").PadRight(24, '-'));
         Console.WriteLine('\n' + $"Разница между макс и миним: {(valmax - valmin).ToString("F3"),3}");
 
-
-        HappyNewYear();  //   вывод на консоль новогоднего поздравления.
+        string[] stringArray = { "С", " ", "Н", "О", "В", "Ы", "М", " ", "Г", "О", "Д", "О", "М", "!", "0" };
+        HappyNewYear(stringArray);  //   вывод на консоль новогоднего поздравления.
 
     }
     End = DisplayReplyString("Продолжить обработку (Y/N");

@@ -29,9 +29,9 @@ while (End != "N")
     int N = DisplayReplyInt("Введите целое число - число строк массива");
 
     if (N < 1)
-    { 
+    {
         if (nPos == -777) break;
-         Console.WriteLine("Число не может быть меньше 1");
+        Console.WriteLine("Число не может быть меньше 1");
     }
     else
     {
@@ -73,10 +73,7 @@ while (End != "N")
                     PrintRealArrayTwoDim(MyArray);
 
                     double[] averArr = CreateRealArray(M);
-                    for (int i = 0; i < M; i++)
-                    {
-                        averArr[i] = 0;
-                    }
+                    for (int i = 0; i < M; i++) averArr[i] = 0;
 
                     for (int j = 0; j < M; j++)
                     {

@@ -1,9 +1,14 @@
-﻿// Задача 52: Задайте двумерный массив из целых чисел. Найдите среднее арифметическое элементов в каждом столбце.
+﻿// Задача 54: Задайте двумерный массив. Напишите программу, которая упорядочит по убыванию элементы каждой строки
+// двумерного массива.
+// Например, задан массив:
 // Например, задан массив:
 // 1 4 7 2
 // 5 9 2 3
 // 8 4 2 4
-// Среднее арифметическое каждого столбца: 4,6; 5,6; 3,6; 3.
+// В итоге получается вот такой массив:
+// 7 4 2 1
+// 9 5 3 2
+// 8 4 4 2
 //
 using static MyLibrary;
 //
@@ -39,7 +44,8 @@ while (End != "N")
         while (End != "N")
         {
             if (nPos == -777) break;
-            M = DisplayReplyIntSaveConsole("Введите целое число - число столбцов массива (выход -777)");
+            // Console.WriteLine();
+            M = DisplayReplyIntSaveConsole('\n' + "Введите целое число - число столбцов массива (выход -777)");
 
             if (M < 1)
             {
@@ -66,23 +72,19 @@ while (End != "N")
                         for (int j = 0; j < M; j++) MyArray[i, j] = dArray[i * M + j];
                     }
 
+                    Bubble_Sort(dArray);
+                    PrintRealArrwithHeader("Распечатываем vfccbd ", dArray);
+
                     Console.Clear();
                     Console.WriteLine(">>>>>>>---->>>>>>");
                     Console.WriteLine("Сформирован массив, строк: " + $"{N,2}" + ", столбцов :" + $"{M,2}" + "." + '\n');
                     PrintRealArrayTwoDim(MyArray);
 
-                    double[] averArr = CreateRealArray(M);
-                    for (int i = 0; i < M; i++) averArr[i] = 0;
+                    PrintRealArrwithHeader("Распечатываем возвращаемый массив", dArray);
 
-                    for (int j = 0; j < M; j++)
-                    {
-                        for (int i = 0; i < N; i++) averArr[j] = averArr[j] + MyArray[i, j];
-                        averArr[j] = averArr[j] / N;
-                    }
-                    Console.WriteLine();
-                    PrintRealArrwithHeader('\n' + "Массив средних значений по столбцам:", averArr);
-                    nPos = -777;
-                    // ConsoleColor[] colors = (ConsoleColor[])ConsoleColor.GetValues(typeof(ConsoleColor));
+                    SortArrayRows(MyArray, true);
+                    Console.WriteLine('\n' + "Отсортируем элементы его строк по возрастанию" + '\n');
+                    PrintRealArrayTwoDim(MyArray);
 
                 }
 
@@ -119,4 +121,5 @@ while (End != "N")
 string[] stringArray = { "Х", "О", "Р", "О", "Ш", "Е", "Г", "О", " ", "Д", "Н", "Я", "!", "0" };
 
 HappyNewYear(stringArray);  //   вывод на консоль приветственного сообщения.
+
 

@@ -72,7 +72,8 @@ while (End != "N")
                         for (int j = 0; j < M; j++) MyArray[i, j] = dArray[i * M + j];
                     }
 
-                    Bubble_Sort(dArray);
+                    // Bubble_Sort(dArray);
+                    BubbleSortbyRowTwoDimDesc (MyArray);
                     PrintRealArrwithHeader("Распечатываем vfccbd ", dArray);
 
                     Console.Clear();
@@ -82,7 +83,7 @@ while (End != "N")
 
                     PrintRealArrwithHeader("Распечатываем возвращаемый массив", dArray);
 
-                    SortArrayRows(MyArray, true);
+                    // SortArrayRows(MyArray, true);
                     Console.WriteLine('\n' + "Отсортируем элементы его строк по возрастанию" + '\n');
                     PrintRealArrayTwoDim(MyArray);
 

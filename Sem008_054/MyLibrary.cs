@@ -269,36 +269,44 @@ public static class MyLibrary
         }
     }
     //Метод, сортирующий массив целых чисел (по возрастанию)
-    public static void BubbleSortbyRowTwoDimDesc(double[,] anArray)
+    public static void BubbleSortbyRowTwoDimDesc(double[,] anArray, bool desc)
     {
 
         int rowcount = anArray.GetLength(0);
         int colcount = anArray.GetLength(1);
 
-        for (int ii = 0; ii < colcount; ii++)
-        {
-
-
-            //Основной цикл (количество повторений равно количеству элементов массива в строке)
-            for (int i = 0; i < rowcount; i++)
+        //Основной цикл (количество повторений равно количеству элементов массива в строке)
+            for (int i = 0; i < colcount; i++)
             {
                 //Вложенный цикл (количество повторений, равно количеству элементов массива минус 1 и минус количество выполненных повторений основного цикла)
-                for (int j = 0; j < rowcount - 2 - i; j++)
+                // for (int j = 0; j < rowcount - 2 - i; j++)
+                for (int j = 0; j < rowcount; j++)
                 {
-                    //Если элемент массива с индексом j больше следующего за ним элемента
-                    if (anArray[ii, j] > anArray[ii,j + 1])
+                    for (k = j + 1; k < rowcount; k++)
                     {
-                        //Меняем местами элемент массива с индексом j и следующий за ним
-                        double minmax = anArray[ii, j];
-                        anArray[ii, j] = anArray[ii, j + 1];
-                        anArray[ii, j + 1] = minmax;
+                    //Если элемент массива с индексом j  меньше следующего за ним элемента
+                   
+                        if (desc)
+                        {
+                            if (anArray[i, j] < anArray[i,k])
+                            {                                                                                                   //Меняем местами элемент массива с индексом j и следующий за ним
+                                 double minmax = anArray[i, j];
+                                 anArray[i, j] = anArray[i, k];
+                                 anArray[i, k = minmax;
+                            }
+                        }
+                        else
+                            {                                                                                                   //Меняем местами элемент массива с индексом j и следующий за ним
+                                 double minmax = anArray[i, j];
+                                 anArray[i, j] = anArray[i, k];
+                                 anArray[i, k = minmax;
+                            }
 
-
-                        //        Swap(ref anArray[j], ref anArray[j + 1]);
                     }
+                        
                 }
             }
-        }
+        
     }
     //
     //  Метод вывода одномерного массива на печать в столбик

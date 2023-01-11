@@ -74,18 +74,18 @@ while (End != "N")
 
                     // Bubble_Sort(dArray);
                     BubbleSortbyRowTwoDimDesc (MyArray);
-                    PrintRealArrwithHeader("Распечатываем vfccbd ", dArray);
+                    PrintRealArrwithHeader("Распечатываем введенный одномерный массив ", dArray);
 
                     Console.Clear();
                     Console.WriteLine(">>>>>>>---->>>>>>");
-                    Console.WriteLine("Сформирован массив, строк: " + $"{N,2}" + ", столбцов :" + $"{M,2}" + "." + '\n');
+                    Console.WriteLine("Отсортированный массив, строк: " + $"{N,2}" + ", столбцов :" + $"{M,2}" + "." + '\n');
                     PrintRealArrayTwoDim(MyArray);
 
                     PrintRealArrwithHeader("Распечатываем возвращаемый массив", dArray);
 
                     // SortArrayRows(MyArray, true);
-                    Console.WriteLine('\n' + "Отсортируем элементы его строк по возрастанию" + '\n');
-                    PrintRealArrayTwoDim(MyArray);
+                    // Console.WriteLine('\n' + "Отсортируем элементы его строк по возрастанию" + '\n');
+                    // PrintRealArrayTwoDim(MyArray);
 
                 }
 

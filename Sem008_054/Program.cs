@@ -73,22 +73,22 @@ while (End != "N")
                     }
 
                     // Bubble_Sort(dArray);
-                    BubbleSortbyRowTwoDimDesc (MyArray);
-                    PrintRealArrwithHeader("Распечатываем введенный одномерный массив ", dArray);
+
 
                     Console.Clear();
-                    Console.WriteLine(">>>>>>>---->>>>>>");
-                    Console.WriteLine("Отсортированный массив, строк: " + $"{N,2}" + ", столбцов :" + $"{M,2}" + "." + '\n');
+                    Console.WriteLine('\n' + ">>>>>>>---->>>>>>");
+                    PrintRealArrwithHeader("Распечатываем введенный одномерный массив построчно", dArray, M);
+                    Console.WriteLine('\n' + ">>>>>>>---->>>>>>");
+                    Console.WriteLine($"Массив, отсортированный по убыванию значений в строках, строк:" + $"{N,2}" + ", столбцов :" + $"{M,2}" + ".");
+                    BubbleSortbyRowTwoDimDesc(MyArray, false);     // Bubble Sort MyArray Descending
                     PrintRealArrayTwoDim(MyArray);
-
-                    PrintRealArrwithHeader("Распечатываем возвращаемый массив", dArray);
-
-                    // SortArrayRows(MyArray, true);
-                    // Console.WriteLine('\n' + "Отсортируем элементы его строк по возрастанию" + '\n');
-                    // PrintRealArrayTwoDim(MyArray);
+                    Console.WriteLine('\n' + ">>>>>>>---->>>>>>");
+                    Console.WriteLine($"Массив, отсортированный по возрастанию значений в строках, строк:" + $"{N,2}" + ", столбцов :" + $"{M,2}" + ".");
+                    BubbleSortbyRowTwoDimDesc(MyArray, true);     // Bubble Sort MyArray Descending
+                    PrintRealArrayTwoDim(MyArray);
+                    break;
 
                 }
-
                 else
                 {
                     ConsoleColor[] colors = (ConsoleColor[])ConsoleColor.GetValues(typeof(ConsoleColor));
@@ -97,7 +97,7 @@ while (End != "N")
                     Console.WriteLine(">>>>>>>---->>>>>>");
                     Console.WriteLine('\n' + $"АВАРИЙНОЕ ЗАВЕРШЕНИЕ ВВОДА ДАННЫХ (ESC)!");
                     Console.ResetColor();
-                    PrintRealArrwithHeader("Распечатываем возвращаемый массив (Esc)", dArray);
+                    PrintRealArrwithHeader("Распечатываем возвращаемый массив (Esc)", dArray, M);
                     break;
 
 

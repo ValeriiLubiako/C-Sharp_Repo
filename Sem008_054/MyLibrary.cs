@@ -268,7 +268,10 @@ public static class MyLibrary
             }
         }
     }
-    //Метод, сортирующий массив целых чисел (по возрастанию)
+    // Метод, сортирующий массив целых чисел (по возрастанию)
+    // На вход подается двумерный массив вещественных чисел,
+    // элементы которого нужно отсортировать построчно по столбуам
+    // второй параметр определяет порядок сортировки - по возрастанию (true) или по убыванию (false)
     public static void BubbleSortbyRowTwoDimDesc(double[,] anArray, bool desc)
     {
 
@@ -276,37 +279,40 @@ public static class MyLibrary
         int colcount = anArray.GetLength(1);
 
         //Основной цикл (количество повторений равно количеству элементов массива в строке)
-            for (int i = 0; i < colcount; i++)
+        for (int i = 0; i < rowcount; i++)
+        {
+            //Вложенный цикл (количество повторений, равно количеству элементов массива минус 1 и минус количество выполненных повторений основного цикла)
+            // for (int j = 0; j < rowcount - 2 - i; j++)
+            for (int j = 0; j < colcount; j++)
             {
-                //Вложенный цикл (количество повторений, равно количеству элементов массива минус 1 и минус количество выполненных повторений основного цикла)
-                // for (int j = 0; j < rowcount - 2 - i; j++)
-                for (int j = 0; j < rowcount; j++)
+                for (int k = j + 1; k < colcount; k++)
                 {
-                    for (k = j + 1; k < rowcount; k++)
-                    {
-                    //Если элемент массива с индексом j  меньше следующего за ним элемента
-                   
-                        if (desc)
-                        {
-                            if (anArray[i, j] < anArray[i,k])
-                            {                                                                                                   //Меняем местами элемент массива с индексом j и следующий за ним
-                                 double minmax = anArray[i, j];
-                                 anArray[i, j] = anArray[i, k];
-                                 anArray[i, k = minmax;
-                            }
-                        }
-                        else
-                            {                                                                                                   //Меняем местами элемент массива с индексом j и следующий за ним
-                                 double minmax = anArray[i, j];
-                                 anArray[i, j] = anArray[i, k];
-                                 anArray[i, k = minmax;
-                            }
+                    // Сравниваем и при выполннии условия сравнения меняем местами значения элементов массива
 
+                    if (desc)
+                    {
+                        if (anArray[i, j] > anArray[i, k])   // Сортировка по возрастанию
+                        {                           //Меняем местами элемент массива с индексом j и следующий за ним
+                            double minmax = anArray[i, j];
+                            anArray[i, j] = anArray[i, k];
+                            anArray[i, k] = minmax;
+                        }
                     }
-                        
+                    else                        // Сортировка по убыванию
+                    {                           // Меняем местами элемент массива с индексом j и следующий за ним
+                        if (anArray[i, j] < anArray[i, k])
+                        {
+                            double minmax = anArray[i, j];
+                            anArray[i, j] = anArray[i, k];
+                            anArray[i, k] = minmax;
+                        }
+                    }
+
                 }
+
             }
-        
+        }
+
     }
     //
     //  Метод вывода одномерного массива на печать в столбик
@@ -1194,15 +1200,15 @@ public static class MyLibrary
             {
                 Console.WriteLine("При вводе произошла ошибка. Повторите последнюю транзакцию, пожалуйста.");
 
-                // PrintRealArrwithHeader("Распечатываем рабочий массив (отладка)", dArray);
-                // PrintRealArrwithHeader("Распечатываем возвращаемый массив (отладка)", MyArray);
+                // PrintRealArrwithHeader("Распечатываем рабочий массив (отладка)", dArray,10);
+                // PrintRealArrwithHeader("Распечатываем возвращаемый массив (отладка)", MyArray,10);
 
 
             }
             if (debugFlag)
             {
-                PrintRealArrwithHeader("Распечатываем рабочий массив (отладка)", dArray);
-                PrintRealArrwithHeader("Распечатываем возвращаемый массив (отладка)", MyArray);
+                PrintRealArrwithHeader("Распечатываем рабочий массив (отладка)", dArray,10);
+                PrintRealArrwithHeader("Распечатываем возвращаемый массив (отладка)", MyArray,10);
             }
         }
 
@@ -1212,9 +1218,13 @@ public static class MyLibrary
     //  Метод вывода на печать одномерного массива вещественных числе в строки по N чисел,
     //  но не больше,чем по 10 чисел в строке, с печатью заголовка перед выводом массива
     //
-    public static void PrintRealArrwithHeader(string header, double[] MyArray)
+    public static void PrintRealArrwithHeader(string header, double[] MyArray, int ElementsInLine)
     {
+        int elinline = 10;
+        if (ElementsInLine <=0) elinline = 10;
+        else elinline = ElementsInLine;
+        
         Console.WriteLine(header);
-        MyLibrary.PrintRealArrayInLine(MyArray, 10);     //  вывод массива на консоль не более 10 элементов в строку
+        MyLibrary.PrintRealArrayInLine(MyArray, elinline);     //  вывод массива на консоль не более 10 элементов в строку
     }
 }

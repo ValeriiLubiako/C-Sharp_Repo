@@ -21,6 +21,7 @@ using static MyLibrary;
 // - DisplayReplyIntSaveConsole() -  Метод ввода с терминала целого числа (без предварительно очищения консоли);
 // - PrintRealArrwithHeader() - Метод вывода на печать одномерного массива вещественных чисел с печатью заголовка;
 // - DisplayReplyString() - Метод ввода с терминала строки символов;
+// - BubbleSortbyRowTwoDimDesc() - 
 // - HappyNewYear() - Метод вывода на консоль сообщения (прогрессирующая текстовая строка, 
 //                  с буквами разных цветов, подобранных по определенной  гамме)
 //
@@ -84,7 +85,7 @@ while (End != "N")
                     PrintRealArrayTwoDim(MyArray);
                     Console.WriteLine('\n' + ">>>>>>>---->>>>>>");
                     Console.WriteLine($"Массив, отсортированный по возрастанию значений в строках, строк:" + $"{N,2}" + ", столбцов :" + $"{M,2}" + ".");
-                    BubbleSortbyRowTwoDimDesc(MyArray, true);     // Bubble Sort MyArray Descending
+                    BubbleSortbyRowTwoDimDesc(MyArray, true);     // Bubble Sort MyArray Ascending
                     PrintRealArrayTwoDim(MyArray);
                     break;
 

@@ -1,2 +1,32 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿// Задача 60: Сформируйте трёхмерный массив из неповторяющихся двузначных (целых) чисел. Напишите программу,
+// которая будет построчно выводить массив, добавляя индексы каждого элемента.
+// Массив размером 2 x 2 x 2
+// 66(0,0,0) 25(0,1,0)
+// 34(1,0,0) 41(1,1,0)
+// 27(0,0,1) 90(0,1,1)
+// 26(1,0,1) 55(1,1,1)
+//
+using static MyLibrary;
+//
+//
+int[,,] Myarray = { { {66,27}, {25, 90} } , { {34, 26}, {41,55} } };
+
+// int[,,] Myarray = { { {66,27,101,102}, {25, 90,121,122} } , { {34, 26,201,202}, {41,55,221,222} }, { {74, 76,301,302}, {71,51,321, 322} } };
+
+Console.WriteLine (">>>>>>>>--------->>>>>>>>");
+Console.WriteLine ("Размер массива:");
+Console.WriteLine($"{Myarray.GetLength(0)}" + " "  +  $"{Myarray.GetLength(1)}" + " "  + $"{Myarray.GetLength(2)}" + '\n') ; 
+
+for (int i = 0; i < Myarray.GetLength(0); i++)
+{
+    Console.WriteLine ('\n' + "Срез по первому индексу (по оси Z) номер: " + $"{i+1}");
+    for (int j = 0; j < Myarray.GetLength(1); j++)
+    {
+        for (int k = 0; k < Myarray.GetLength(2); k++)
+        {
+            if (k == 0) Console.Write( '\n' + $"{Myarray[i, j,k],4}" + "(" + $"{i}" + "," + $"{j}" + "," + $"{k}" + ")" );
+            else Console.Write($"{Myarray[i, j, k],4}" + "(" + $"{i}" + "," + $"{j}" + "," + $"{k}" + ")" );
+        }
+    }
+}
+Console.WriteLine ('\n' + ">>>>>>>>--------->>>>>>>>" + '\n');

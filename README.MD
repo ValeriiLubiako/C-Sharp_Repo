@@ -27,3 +27,6 @@ Seminar 007 Task052 --> [Схема](/Sem007_052/Blockchart052.drawio.png), [К�
 Seminar 008 Task054 --> [Схема](/Sem008_054/Blockchart054.drawio.png), [КОД](/Sem008_054/Program.cs)
 Seminar 008 Task056 --> [Схема](/Sem008_056/Blockchart056.drawio.png), [КОД](/Sem008_056/Program.cs)
 Seminar 008 Task060 --> [Схема](/Sem008_060/Blockchart060.drawio.png), [КОД](/Sem008_060/Program.cs)
+Seminar 009 Task064 --> [Схема](/Sem009_064/Blockchart064.drawio.png), [КОД](/Sem009_064/Program.cs)
+Seminar 009 Task066 --> [Схема](/Sem009_066/Blockchart066.drawio.png), [КОД](/Sem009_066/Program.cs)
+Seminar 009 Task068 --> [Схема](/Sem009_068/Blockchart068.drawio.png), [КОД](/Sem009_068/Program.cs)

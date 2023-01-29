@@ -1207,8 +1207,8 @@ public static class MyLibrary
             }
             if (debugFlag)
             {
-                PrintRealArrwithHeader("Распечатываем рабочий массив (отладка)", dArray,10);
-                PrintRealArrwithHeader("Распечатываем возвращаемый массив (отладка)", MyArray,10);
+                PrintRealArrwithHeader("Распечатываем рабочий массив (отладка)", dArray, 10);
+                PrintRealArrwithHeader("Распечатываем возвращаемый массив (отладка)", MyArray, 10);
             }
         }
 
@@ -1221,66 +1221,99 @@ public static class MyLibrary
     public static void PrintRealArrwithHeader(string header, double[] MyArray, int ElementsInLine)
     {
         int elinline = 10;
-        if (ElementsInLine <=0) elinline = 10;
+        if (ElementsInLine <= 0) elinline = 10;
         else elinline = ElementsInLine;
-        
+
         Console.WriteLine(header);
         MyLibrary.PrintRealArrayInLine(MyArray, elinline);     //  вывод массива на консоль не более 10 элементов в строку
     }
-//        
-// Метод рекурсивного составления строки из значений натуральных чисел в интервале от n до 1
-// На вход подается натуральное число и - границы интервала суммируемых чисел
-// Возвращается символьная строка, составленная из значений натуральных чисел в диапазоне от n до 1, 
-// разделенных пробелои и запятой, подготовленная к выводу на консоль
-//
+    //        
+    // Метод рекурсивного составления строки из значений натуральных чисел в интервале от n до 1
+    // На вход подается натуральное число и - границы интервала суммируемых чисел
+    // Возвращается символьная строка, составленная из значений натуральных чисел в диапазоне от n до 1, 
+    // разделенных пробелои и запятой, подготовленная к выводу на консоль
+    //
 
-public static string NatRecurse(int n)
-        {
-            if (n == 1)
-                return "1";
-            else
-                return n +  ", " + NatRecurse(n - 1);
-        }
-//        
-// Метод рекурсивного вычисления суммы натуральных чисел в заданном интервале их значений - от m до n
-// На вход подаются два натуральных числа (m и n) - границы интервалаа суммируемых чисел
-// Возвращается натуральное число - сумма чисел в интервале от m до n
-//
-public static int NatSumFromTo (int m, int n )
-{
-    if(n == m)
-        return m;
-    return n + NatSumFromTo(m,n-1);
-}
-//
-// Метод вычисления функции Аккермана
-// Возвращает значение функции Аккермана для двух неотрицательных целых чисел
-// На вход подаются два целых числа - n и m
-// На выходе возвращается неотрицательное целое число, рассчитанное по формулам, описывающим функцию
-// При больших значениях n и m может возникнуть переполнение стека
-//
-public static int Akm(int n, int m)
-{
-  if (n == 0)
-    return m + 1;
-  else
-    if ((n != 0) && (m == 0))
-      return Akm(n - 1, 1);
-    else
-      return Akm(n - 1, Akm(n, m - 1));
-}
-//
-// Метод вывода на консоль содержимого массива строк
-//
-//
-public static void PrintStringArray (string[] array)
-{
-    int k = array.Length;
-    Console.Write('\n' + "[");
-    for (int i=0;i<k;i++ ) 
+    public static string NatRecurse(int n)
     {
-     if (i==k-1) Console.WriteLine($"\"{array[i]}\"]" + '\n' );
-     else Console.Write($"\"{array[i]}\"," );
+        if (n == 1)
+            return "1";
+        else
+            return n + ", " + NatRecurse(n - 1);
     }
-}
+    //        
+    // Метод рекурсивного вычисления суммы натуральных чисел в заданном интервале их значений - от m до n
+    // На вход подаются два натуральных числа (m и n) - границы интервалаа суммируемых чисел
+    // Возвращается натуральное число - сумма чисел в интервале от m до n
+    //
+    public static int NatSumFromTo(int m, int n)
+    {
+        if (n == m)
+            return m;
+        return n + NatSumFromTo(m, n - 1);
+    }
+    //
+    // Метод вычисления функции Аккермана
+    // Возвращает значение функции Аккермана для двух неотрицательных целых чисел
+    // На вход подаются два целых числа - n и m
+    // На выходе возвращается неотрицательное целое число, рассчитанное по формулам, описывающим функцию
+    // При больших значениях n и m может возникнуть переполнение стека
+    //
+    public static int Akm(int n, int m)
+    {
+        if (n == 0)
+            return m + 1;
+        else
+          if ((n != 0) && (m == 0))
+            return Akm(n - 1, 1);
+        else
+            return Akm(n - 1, Akm(n, m - 1));
+    }
+    //
+    // Метод вывода на консоль содержимого массива строк
+    // На вход полается массив символьных строк
+    //
+    public static void PrintStringArray(string[] array)
+    {
+        int k = array.Length;
+        Console.Write('\n' + "[");
+        for (int i = 0; i < k; i++)
+        {
+            if (i == k - 1) Console.WriteLine($"\"{array[i]}\"]" + '\n');
+            else Console.Write($"\"{array[i]}\",");
+        }
+    }
+    //
+    // Метод копирования элементов массива символьных строк
+    // длина которых не превышает заданную.
+    // На вход полается исходный массив и минимальная длина строк,
+    // копируемых в выходной массив
+    //
+    public static void BuildSubArray(string[] ArrIn, int maxLineLength, string[] ArrOut)
+    {
+        int k = ArrIn.Length;
+        int j = 0;
+        for (int i = 0; i < k; i++)
+        {
+            if (ArrIn[i].Length <= maxLineLength)
+            {
+                ArrOut[j] = ArrIn[i];
+                j++;
+            }
+        }
+    }
+// Метод подсчета количества элементов массива символьных строк
+// длиной, не превышающей заданную
+// На вход полается исходный массив и максимально допустимая длина строки,
+// копируемых в выходной массив
+//
+public static int CountLengthSubArray(string[] ArrIn, int minLineLength)
+    {
+        int k = 0;
+        for (int i = 0; i < ArrIn.Length; i++)
+        {
+            if (ArrIn[i].Length <= minLineLength) k++;
+        }
+        return k;
+    }
 }

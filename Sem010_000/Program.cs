@@ -11,20 +11,18 @@ using static MyLibrary;
 //
 Console.WriteLine(">>>>>------>>>>>" + '\n');
 // Console.Write("ВВедите элементы массива через пробел:");
-string[] AddArr = {"One","Two", "Three", "Four","Five", "Six"};
+
+
+string[] ArrIn = {"One","Two", "Three", "Four","Five", "Six"};
+string[] ArrOut = new string[CountLengthSubArray(ArrIn, 3)];
+
 // string[] OutArr = new string[AddArr.Length];
 
 // LimitLengthArray(AddArr, OutArr );
-PrintStringArray(AddArr);
-string[] AddArr2 = {"","Ten","Eleven","","Fourteen"}; 
-PrintStringArray( AddArr2);
+PrintStringArray(ArrIn);
 
+BuildSubArray (ArrIn, 3, ArrOut);
 
-// Метод построения массива из элементов массива строк, длина которых не превышает 3-х символов
-//
-//
-// void LimitLengthArray(string[] arr1, string[] arr2);
-//
-
+PrintStringArray(ArrOut);
 
 

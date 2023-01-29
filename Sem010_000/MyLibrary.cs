@@ -505,6 +505,7 @@ public static class MyLibrary
     //
     //
     //  Метод ввода с терминала целого числа (консоль предварительно очищается)
+    //  Возвращает значение целого числа, введенного с консоли
     //
     public static int DisplayReplyInt(string PromptMessage)
     {
@@ -1167,7 +1168,7 @@ public static class MyLibrary
     public static bool FillArrayConsoleDouble(double[] MyArray, bool debugFlag)
     //
     // Метод заполнения массива вещественными числами с консоли
-    // На вход полается массив вещественных чисел и значение флага выполнения в отладочном режиме
+    // На вход полается массив вещественных чисел, который нужно заполнить, и значение флага выполнения в отладочном режиме
     // (в отладочном режиме  выдаются на консоль содержание рабочих массивов)
     // Возвращается заполненный значениями массив и булевское значение успешного (неуспешного) 
     // завершения работы метода
@@ -1271,7 +1272,9 @@ public static class MyLibrary
     }
     //
     // Метод вывода на консоль содержимого массива строк
-    // На вход полается массив символьных строк
+    // На вход полается массив, элементами которых являются символьные строки
+    // Элементы массива выводятся на вонсоль в строку в приведенном в качестве примера выполнения задания формате
+    // (написан специально под данную задачу)
     //
     public static void PrintStringArray(string[] array)
     {
@@ -1286,8 +1289,10 @@ public static class MyLibrary
     //
     // Метод копирования элементов массива символьных строк
     // длина которых не превышает заданную.
-    // На вход полается исходный массив и минимальная длина строк,
-    // копируемых в выходной массив
+    // На вход подается исходный массив, минимальная длина строк,
+    // копируемых в выходной массив и инициализированный массив нужной длины занесения в него 
+    // значений строк, удовлетворяющих требованию по длине (не превышающих заданную) 
+    // На выходе получаем сформированный массив
     //
     public static void BuildSubArray(string[] ArrIn, int maxLineLength, string[] ArrOut)
     {
@@ -1302,12 +1307,12 @@ public static class MyLibrary
             }
         }
     }
-// Метод подсчета количества элементов массива символьных строк
-// длиной, не превышающей заданную
-// На вход полается исходный массив и максимально допустимая длина строки,
-// копируемых в выходной массив
-//
-public static int CountLengthSubArray(string[] ArrIn, int minLineLength)
+    // Метод подсчета количества элементов массива символьных строк,
+    // длина которых не превышающей заданную
+    // На вход полается исходный массив и максимально допустимая длина строки,
+    // копируемых в выходной массив
+    //
+    public static int CountLengthSubArray(string[] ArrIn, int minLineLength)
     {
         int k = 0;
         for (int i = 0; i < ArrIn.Length; i++)
@@ -1315,5 +1320,338 @@ public static int CountLengthSubArray(string[] ArrIn, int minLineLength)
             if (ArrIn[i].Length <= minLineLength) k++;
         }
         return k;
+    }
+    public static bool DataEntryForArrayString(string[] dArray, int iNCurrent, out int nFilled, bool debugFlag)
+    //
+    //  Метод возвращает массив введенных с консоли вещественных чисел
+    //  На вход подается:
+    //  а) целое число - длина массива;
+    //  б) массив символьных строк, предназначенный для заполнения введенными с консоли числами.
+    //  МЕТОД В СТАДИИ ОТДЛАДКИ (ПОКА НЕ ИСПОЛЬЗУЕТСЯ)!!!!!!!!
+    //
+    {
+        int N = dArray.Length;
+        ConsoleKeyInfo cki;
+        bool flagOK = true;
+        nFilled = iNCurrent;
+
+
+        // Console.TreatControlCAsInput = true;   // Блокируем выход по CTRL+C, останутся только по Esc и Enter
+
+
+        string[] ab = new string[200];
+        int i = 0;
+
+        while (i < N)      // Обнуляем заполняемый массив
+        {
+            dArray[i] = String.Empty;
+            i++;
+        }
+        i = 0;
+
+        string StringFromConsole = string.Empty;           // Здесь формируем строку из значений символов, получаемых через элемент структуры Console.ReadKey();
+        string ckiKeyToString = string.Empty;              // Строка для считывания кода при однократном обращении к Console.ReadKey();
+
+
+
+        // Определяем значения массива ConsoleReadKeyValues как массив допустимых для ввода числовых данных кодов эл-та структуры, считываемой по Console.ReadKey()
+        // string[] ConsoleReadKeyValues = { "D0", "D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8", "D9", "Oem2", "OemPeriod", "OemMinus", "Spacebar", "Enter", "Escape" };
+        string[] ConsoleReadKeyValues = { "Spacebar", "Enter", "Escape" };
+
+        // int k = 100;
+
+        Console.Clear();
+
+        int origRow = Console.CursorTop;
+        int origCol = Console.CursorLeft;
+        // int colPos = origCol;
+        Console.SetCursorPosition(origCol, origRow);
+        Console.WriteLine("Вводите элементы массива (через пробел, без кавычек):");
+        Console.WriteLine("Ввод символьных строк в массив - ENTER, отказ и повторный ввод - ESCAPE");
+
+        // Clear the screen, then save the top and left coordinates.
+
+        string ConsoleString = string.Empty;
+        int kswitch = 1000;
+
+        // bool caseflag10 = true;      // флажки, используются для модификации ветвления - 
+        // bool caseflag11 = true;      //  блокируют повторный ввод клавиш пробел, точка, запятая, знак минус
+        // bool caseflag12 = true;     //  или комбинации их нежелательных последовательностей 
+        // bool caseflag13 = true;
+        bool caseflag14 = true;
+
+        do     // цикл опроса по Console.ReadKey();
+        {
+            Console.SetCursorPosition(origCol, origRow + 2);        // располагаем курсор в верхнем левом углу области
+
+
+            cki = Console.ReadKey();
+
+            ckiKeyToString = cki.Key.ToString();
+
+            kswitch = 10000;    // если не является допустимым символом, то возвращается необрабатываемое в switch значение
+                                //  таким образом ограничиваеим возможность ввода только цифрами, 
+                                //  знаком минус, точкой и зпт, управление - Enter  и Escape
+
+            for (int j = 0; j < 3; j++)        // формирую целочисленные значения для параметра переключателя
+            {
+                if (ckiKeyToString == ConsoleReadKeyValues[j])
+                {
+                    kswitch = j;
+                    break;
+                }
+
+            }
+
+            int kswitch1 = kswitch;
+            // if (kswitch < 10) kswitch1 = 0;
+
+
+            // switch (kswitch)
+            switch (kswitch1)
+
+            {
+                case 10000:
+                    // caseflag10 = true;
+                    // caseflag11 = true;
+                    // caseflag12 = true;
+                    // caseflag13 = true;
+                    caseflag14 = true;
+                    StringFromConsole = kswitch.ToString();
+                    ConsoleString = ConsoleString + cki.Key.ToString();
+                    // ConsoleString = ConsoleString + StringFromConsole;
+                    ab[i] = cki.Key.ToString();
+                    i++;
+                    break;
+                // case 10:
+                //     if (caseflag10)
+                //     {
+                //         caseflag10 = false;
+                //         caseflag14 = false;
+                //         StringFromConsole = ".";
+                //         ConsoleString = ConsoleString + StringFromConsole;
+                //         ab[i] = cki.Key.ToString();
+                //         i++;
+                //         break;
+                //     }
+                //     else break;
+                // case 11:
+                //     if (caseflag11)
+                //     {
+                //         caseflag11 = false;
+                //         caseflag14 = false;
+                //         StringFromConsole = ".";
+                //         ConsoleString = ConsoleString + StringFromConsole;
+                //         ab[i] = cki.Key.ToString();
+                //         i++;
+                //         break;
+                //     }
+                //     else break;
+                // case 12:
+                //     if (caseflag12)
+                //     {
+                //         caseflag12 = false;
+                //         caseflag14 = false;
+                //         StringFromConsole = "-";
+                //         ConsoleString = ConsoleString + StringFromConsole;
+                //         ab[i] = cki.Key.ToString();
+                //         i++;
+                //         break;
+                //     }
+                //     else break;
+                // case 13:
+                //     if (caseflag13)
+                //     {
+                //         caseflag13 = false;
+                //         caseflag14 = false;
+                //         StringFromConsole = " ";
+                //         ConsoleString = ConsoleString + StringFromConsole;
+                //         ab[i] = cki.Key.ToString();
+                //         i++;
+                //         break;
+                //     }
+                //     else break;
+                case 14:
+                    // StringFromConsole = "Enter";
+                    if (caseflag14)
+                    {
+                        // caseflag10 = true;
+                        // caseflag11 = true;
+                        // caseflag12 = true;
+                        // caseflag13 = true;
+                        ab[i] = cki.Key.ToString();
+                        i++;
+                        break;
+                    }
+                    else break;
+                case 15:
+                    // StringFromConsole = "Escape";
+                    // caseflag10 = true;
+                    // caseflag11 = true;
+                    // caseflag12 = true;
+                    // caseflag13 = true;
+                    caseflag14 = true;
+                    ab[i] = cki.Key.ToString();
+                    i++;
+                    nFilled = -1;
+                    break;
+            }
+
+
+
+            Console.Clear();
+            Console.SetCursorPosition(0, 0);
+
+            Console.Write(ConsoleString);
+
+
+
+            if (cki.Key == ConsoleKey.Enter && caseflag14) break;
+
+        } while (cki.Key != ConsoleKey.Escape);
+
+
+        if (debugFlag) PrintStringArrayInLine(ab, 10);
+
+        // Assign double  values to dArray elements from ConsoleString string
+
+        i = 0;    //dArray index
+        string[] subs = ConsoleString.Split(' ');
+        if (nFilled != -1)
+        {
+            nFilled = 0;           // Счетчик числа заполненных в dArray значений - инициализация - обнуляем
+        }
+        else
+        {
+            Console.WriteLine("Вы прервали ввод, нажав Esc. Повторите последнюю транзакцию, пожалуйста.");
+            return false;
+        }
+        foreach (string sub in subs)
+        {
+
+            // try
+            // {
+            //  dArray[i] = Convert.ToDouble(sub);
+            dArray[i] = sub;
+            nFilled++;      // Счетчик числа заполненных в dArray значений - добавляем 1 при заполнении очередного значения
+            // }
+            // catch (FormatException)
+            // {
+            //     Console.WriteLine("Unable to convert '{0}' to a Double.", sub);
+            //     flagOK = false;
+            //     break;
+            // }
+            // catch (OverflowException)
+            // {
+            //     Console.WriteLine("'{0}' is outside the range of a Double.", sub);
+            //     flagOK = false;
+            //     break;
+            // }
+            if (i < N - 1) i++;    //  движемся по формируемому массиву значений
+            else break;     //  до достижения его границы, что сверху границы длины массива остаются неприсвоенным
+        }
+        return flagOK;
+
+    }
+    public static bool FillArrayConsoleString(string[] MyArray, bool debugFlag)
+    //
+    // Метод заполнения массива символьными строками с консоли
+    // На вход полается массив, элементы которого являются символьными строками, который нужно заполнить, а также значение флага выполнения в отладочном режиме
+    // (в отладочном режиме  выдаются на консоль содержание рабочих массивов)
+    // Возвращается заполненный значениями массив и булевское значение успешного (неуспешного) 
+    // завершения работы метода
+    //  МЕТОД В ТАДИИ ОТЛАДКИ!!!11
+    {
+        int N = MyArray.Length;
+
+        int M = 0;     // Счетчик заполненных элементов массива MyArray
+
+
+        while (M < N)
+        {
+            int i = N - M;
+            string[] dArray = MyLibrary.CreateStringArray(i);
+
+            if (MyLibrary.DataEntryForArrayString(dArray, M, out int nassigned, false))
+            {
+                if (nassigned == -1)
+                {
+                    return false;
+                }
+                for (int j = 0; j < MyLibrary.Min(i, nassigned); j++)  //  В MyArray заносятся только первые N значений (в соответствии с его длиной)
+                {
+                    MyArray[M + j] = dArray[j];     //  Дописываем в массив MyArray с которым обращались из основной программы
+                }
+
+                M = M + nassigned;     //  обновляем количество заполненных элементов массива MyArray
+            }
+            else
+            {
+                Console.WriteLine("При вводе произошла ошибка. Повторите последнюю транзакцию, пожалуйста.");
+
+                // PrintRealArrwithHeader("Распечатываем рабочий массив (отладка)", dArray,10);
+                // PrintRealArrwithHeader("Распечатываем возвращаемый массив (отладка)", MyArray,10);
+
+
+            }
+            if (debugFlag)
+            {
+                Console.WriteLine('\n' + "Распечатываем рабочий массив (отладка)");
+                MyLibrary.PrintStringArray(dArray);
+                // PrintRealArrwithHeader("Распечатываем возвращаемый массив (отладка)", MyArray, 10);
+                Console.WriteLine('\n' + "Распечатываем возвращаемый массив (отладка)");
+                MyLibrary.PrintStringArray(MyArray);
+            }
+        }
+
+        return true;
+    }
+    //
+    // Метод создания одномерного массива с заданным количеством элементов
+    // Элементы являются символьными строками
+    // Возвращает инициализированный массив
+    // 
+    public static string[] CreateStringArray(int count)
+    {
+        return new string[count];
+    }
+    //
+    // Метод присваивания значений элементам массива, которыми являются символьные строки
+    // На вход подается массив, который нужно заполнить
+    // Возвращается заполненный значениями массив и булевское значение успешного (true) или неуспешного (false) 
+    // завершения работы метода
+    public static bool FillArrayConsoleTextString(string[] MyArray)
+    {
+        int N = MyArray.Length;
+        Console.Clear();
+        Console.WriteLine('\n' + "Введите элементы массива строк. Кол-во элементов:" + $"{N,2}" );
+        Console.WriteLine(">>>>>------>>>>>" + '\n');
+        int position = 0;
+string lline;
+
+        while (position < N)
+
+        {
+            Console.WriteLine("Введите элемент № " + $"{position+1}");
+            Console.WriteLine("(чтобы прервать ввод нажмите Ctrl+Z, затем ENTER)");
+            lline = Console.ReadLine();
+            if (lline == null) return false;
+            else
+            {
+                MyArray [position] = lline;
+                position++;
+            }  
+        }
+        return true;
+// string line;
+//       Console.WriteLine("Enter one or more lines of text (press CTRL+Z to exit):");
+//       Console.WriteLine();
+//       do {
+//          Console.Write("   ");
+//          line = Console.ReadLine();
+//          if (line != null)
+//             Console.WriteLine("      " + line);
+//       } while (line != null);
+
     }
 }

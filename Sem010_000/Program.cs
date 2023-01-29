@@ -9,20 +9,42 @@
 //
 using static MyLibrary;
 //
-Console.WriteLine(">>>>>------>>>>>" + '\n');
-// Console.Write("ВВедите элементы массива через пробел:");
+string End = "Y";
 
+while (End != "N")
+{
 
-string[] ArrIn = {"One","Two", "Three", "Four","Five", "Six"};
-string[] ArrOut = new string[CountLengthSubArray(ArrIn, 3)];
+    int N = DisplayReplyInt("Введите целое число - число элементов массива");
 
-// string[] OutArr = new string[AddArr.Length];
+    if (N < 1) Console.WriteLine("Число не может быть меньше 1");
+    else
+    {
+        string[] ArrIn = CreateStringArray(N);
 
-// LimitLengthArray(AddArr, OutArr );
-PrintStringArray(ArrIn);
+        if (FillArrayConsoleTextString(ArrIn))
+        {
+            Console.WriteLine('\n' + "Исходный массив:");
+            PrintStringArray(ArrIn);
 
-BuildSubArray (ArrIn, 3, ArrOut);
+            string[] ArrOut = new string[CountLengthSubArray(ArrIn, 3)];
 
-PrintStringArray(ArrOut);
+            BuildSubArray(ArrIn, 3, ArrOut);
+            
+            Console.WriteLine('\n' + "Сформированный массив:");
+            PrintStringArray(ArrOut);
 
+        }
+        else Console.WriteLine('\n' + "Ввод исходного массива был прерван. Его придется ввести заново...");
 
+    }
+
+    End = DisplayReplyString("Продолжить обработку (Y/N");
+    if (End == "n") break;
+    if (End == "т") break;
+    if (End == "Т") break;
+    if (End == "N") break;
+
+}
+string[] stringArray = { "Х", "О", "Р", "О", "Ш", "Е", "Г", "О", " ", "Д", "Н", "Я", "!", "0" };
+
+HappyNewYear(stringArray);  //   вывод на консоль сообщения.
